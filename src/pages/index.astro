@@ -71,7 +71,7 @@ import bgPattern from '../assets/white-bg-pattern.webp';
   .bg-pattern {
     position: absolute;
     width: 100%;
-    /* object-fit: cover; */
+    height: auto;
     z-index: 5;
   }
 
@@ -123,5 +123,11 @@ import bgPattern from '../assets/white-bg-pattern.webp';
 
   section.three h1 {
     margin-bottom: 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .bg-pattern.top {
+      margin-top: -8rem;
+    }
   }
 </style>

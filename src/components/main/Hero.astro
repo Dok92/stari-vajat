@@ -6,14 +6,17 @@ import coke from '../../assets/coke-glass.webp';
 import pizza from '../../assets/food/pizza.webp';
 import pancaces from '../../assets/food/pancaces-plate.webp';
 import gulas from '../../assets/food/gulas.webp';
+import CTA2 from '../cta/CTA2.astro';
 ---
 
 <section class='hero'>
   <Image src={bg} class='hero-img' alt='Placeholder Image' />
   <div class='text'>
     <h1>Stari Vajat</h1>
-    <h2></h2>
+    <h2>Ukus domaće kuhinje na dohvat ruke</h2>
+    <CTA2 type='phone' />
   </div>
+
   <div class='presentation'>
     <img src='/img/icons/tray.svg' class='tray top' alt='' />
     <Image src={pizza} class='plate pizza' alt='stari vajat pica' />
@@ -25,255 +28,312 @@ import gulas from '../../assets/food/gulas.webp';
     <img src='/img/icons/tray.svg' class='tray bottom' alt='' />
     <Image src={pancaces} class='plate pancaces' alt='stari vajat palačinke' />
     <div class='description' id='bottom'>
-      <p class='headline'>Palačinke "Slatki Vajat"</p>
-      <p class='note'>eurokrem, čokoladna bananica, boni bone, cream rolls, šlag, plazma, čoko preliv</p>
+      <p class='headline'>Kuvana Jela</p>
+      <p class='note'>Juneći gulaš, Ćufte u paradajz sosu, Pasulj sa rebrima i slaninom i dr.</p>
     </div>
     <Image src={coffee} class='drink coffee' alt='espreso kafa' />
   </div>
-</section>
 
-<style>
-  .hero {
-    width: 100%;
-    display: flex;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  .hero-img {
-    width: 100%;
-    height: 100%;
-    opacity: 40%;
-    object-fit: cover;
-    position: absolute;
-    z-index: 1;
-  }
-
-  :not(.hero-img) {
-    z-index: 2;
-  }
-
-  .text {
-    padding-left: var(--x-spacing-desktop);
-    padding-top: 150px;
-  }
-
-  .tray {
-    position: absolute;
-    z-index: 3;
-    width: 1100px;
-  }
-
-  .tray.top {
-    right: -18em;
-    top: -20em;
-    /* display: none; */
-    animation: slideInTopRight 2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-  }
-
-  .tray.bottom {
-    right: 30em;
-    top: 35em;
-    animation: slideInBottomLeft 2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-  }
-
-  @keyframes slideInTopRight {
-    from {
-      transform: rotate(180deg) translate(-100%, 100%);
+  <style>
+    .hero {
+      width: 100%;
+      display: flex;
+      min-height: 100vh;
+      overflow: hidden;
     }
-    to {
-      transform: rotate(180deg) translate(0, 0);
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      opacity: 40%;
+      object-fit: cover;
+      position: absolute;
+      z-index: 1;
     }
-  }
 
-  @keyframes slideInBottomLeft {
-    from {
-      transform: translate(-100%, 100%);
+    :not(.hero-img) {
+      z-index: 2;
     }
-    to {
-      transform: translate(0, 0);
-    }
-  }
 
-  @keyframes slideInPizza {
-    from {
-      transform: translate(300%, -300%);
-      visibility: hidden;
-    }
-    to {
-      transform: translate(0, 0);
-      visibility: visible;
-    }
-  }
-
-  @keyframes slideInPancaces {
-    from {
-      transform: translate(-300%, 300%);
-      visibility: hidden;
-    }
-    to {
-      transform: translate(0, 0);
-      visibility: visible;
-    }
-  }
-
-  .plate {
-    position: absolute;
-    z-index: 3;
-    width: 23rem;
-    height: auto;
-    filter: drop-shadow(25px 25px 15px rgba(0, 0, 0, 0.7));
-  }
-
-  .pizza {
-    right: 29em;
-    top: 9em;
-    visibility: hidden;
-    animation: 2s slideInPizza 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-  }
-
-  .pancaces {
-    right: 29em;
-    top: 32em;
-    visibility: hidden;
-    animation: 2s slideInPancaces 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-  }
-
-  .drink {
-    position: absolute !important;
-    z-index: 5;
-    opacity: 0;
-  }
-
-  .coke {
-    right: 14em;
-    top: 16em;
-    height: auto;
-    animation: fadeInRight 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 1.3s forwards;
-  }
-
-  .coffee {
-    right: 47em;
-    top: 26em;
-    width: 11rem;
-    height: auto;
-    z-index: 2;
-    animation: fadeInLeft 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 1.3s forwards;
-  }
-
-  .description {
-    position: absolute;
-    opacity: 0;
-    z-index: 10;
-    transform: rotate(327deg);
-    width: 250px;
-    text-align: center;
-    animation: fadeIn 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 2.3s forwards;
-  }
-
-  .description#top {
-    top: 4.5em;
-    right: 16em;
-  }
-
-  .description#bottom {
-    top: 47em;
-    right: 47em;
-  }
-
-  .headline {
-    font-size: var(--fs-300);
-    font-weight: 600;
-    color: var(--text-100);
-  }
-
-  .note {
-    color: var(--text-300);
-    font-size: var(--fs-100);
-  }
-
-  @keyframes fadeInRight {
-    from {
-      opacity: 0;
-      transform: translateX(100px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  @keyframes fadeInLeft {
-    from {
-      opacity: 0;
-      transform: translateX(-100px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @media screen and (max-width: 768px) {
     .text {
-      padding-left: var(--x-spacing-mobile);
-      padding-top: var(--space-400);
+      padding: var(--x-spacing-desktop);
+      padding-top: 150px;
     }
 
-    h1 {
-      font-size: 5rem;
+    h2 {
+      font-size: var(--fs-500);
+      font-weight: 500;
+      margin-top: 0;
+    }
+
+    .btn {
+      padding: 10px 16px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: var(--rounded-full);
+      font-size: var(--fs-300);
+      /* font-weight: 600; */
     }
 
     .tray {
-      width: 550px;
+      position: absolute;
+      z-index: 3;
+      width: 1100px;
     }
 
     .tray.top {
-      top: 5em;
+      right: -18em;
+      top: -20em;
+      /* display: none; */
+      animation: slideInTopRight 2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
     }
 
     .tray.bottom {
-      right: 3em;
-      top:;
+      right: 30em;
+      top: 35em;
+      animation: slideInBottomLeft 2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    }
+
+    @keyframes slideInTopRight {
+      from {
+        transform: rotate(180deg) translate(-100%, 100%);
+      }
+      to {
+        transform: rotate(180deg) translate(0, 0);
+      }
+    }
+
+    @keyframes slideInBottomLeft {
+      from {
+        transform: translate(-100%, 100%);
+      }
+      to {
+        transform: translate(0, 0);
+      }
+    }
+
+    @keyframes slideInPizza {
+      from {
+        transform: translate(300%, -300%);
+        visibility: hidden;
+      }
+      to {
+        transform: translate(0, 0);
+        visibility: visible;
+      }
+    }
+
+    @keyframes slideInPancaces {
+      from {
+        transform: translate(-300%, 300%);
+        visibility: hidden;
+      }
+      to {
+        transform: translate(0, 0);
+        visibility: visible;
+      }
     }
 
     .plate {
-      width: 11.5rem;
-      filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
+      position: absolute;
+      z-index: 3;
+      width: 23rem;
+      height: auto;
+      filter: drop-shadow(25px 25px 15px rgba(0, 0, 0, 0.7));
     }
 
     .pizza {
+      right: 29em;
+      top: 9em;
+      visibility: hidden;
+      animation: 2s slideInPizza 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
     }
 
     .pancaces {
+      right: 29em;
+      top: 32em;
+      visibility: hidden;
+      animation: 2s slideInPancaces 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
     }
 
     .drink {
+      position: absolute !important;
+      z-index: 3;
+      opacity: 0;
     }
 
     .coke {
-      width: 100px;
+      right: 14em;
+      top: 16em;
+      height: auto;
+      animation: fadeInRight 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 1.3s forwards;
     }
 
     .coffee {
-      width: 5.5rem;
+      right: 47em;
+      top: 26em;
+      width: 11rem;
+      height: auto;
+      z-index: 2;
+      animation: fadeInLeft 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 1.3s forwards;
     }
 
     .description {
-      width: 150px;
+      position: absolute;
+      opacity: 0;
+      z-index: 10;
+      transform: rotate(327deg);
+      width: 250px;
+      text-align: center;
+      animation: fadeIn 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 2.3s forwards;
     }
 
     .description#top {
+      top: 4.5em;
+      right: 16em;
     }
 
     .description#bottom {
+      top: 47em;
+      right: 47em;
     }
-  }
-</style>
+
+    .headline {
+      font-size: var(--fs-300);
+      font-weight: 600;
+      color: var(--text-100);
+    }
+
+    .note {
+      color: var(--text-300);
+      font-size: var(--fs-300);
+      font-family: 'Sofia Sans Extra Condensed Variable', sans-serif;
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .text {
+        padding-left: var(--x-spacing-mobile);
+        padding-top: var(--space-400);
+      }
+
+      h1 {
+        font-size: 5rem;
+      }
+
+      h2 {
+        font-size: 24px;
+        color: var(--text-900);
+        font-weight: 500;
+        text-transform: none;
+        /* padding-right: 1rem; */
+        margin-bottom: 2rem;
+      }
+
+      .presentation {
+        position: relative;
+        width: 100%;
+      }
+
+      .tray {
+        width: 550px;
+        position: absolute;
+      }
+
+      .tray.top {
+        top: inherit;
+        bottom: 17em;
+        left: 1em;
+      }
+
+      .tray.bottom {
+        top: inherit;
+        right: 1em;
+        bottom: -8em;
+      }
+
+      .plate {
+        width: 11.5rem;
+        filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
+        position: absolute;
+        top: inherit;
+      }
+
+      .pizza {
+        bottom: 18em;
+        left: 0.5em;
+      }
+
+      .pancaces {
+        bottom: 8em;
+        right: 1em;
+      }
+
+      .drink {
+        top: inherit;
+      }
+
+      .coke {
+        width: 95px;
+        bottom: 14em;
+        right: 0em;
+      }
+
+      .coffee {
+        width: 5.5rem;
+        right: inherit;
+        bottom: 8em;
+        left: 3em;
+      }
+
+      .description {
+        width: 160px;
+      }
+
+      .description#top {
+        left: 11em;
+        bottom: 22.5em;
+        top: inherit;
+      }
+
+      .description#bottom {
+        top: inherit;
+        right: 10em;
+        bottom: 2em;
+      }
+    }
+  </style>
+</section>

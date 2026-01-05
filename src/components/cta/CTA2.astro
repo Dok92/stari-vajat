@@ -6,19 +6,19 @@ interface Props {
   phoneNumber?: string; // without plus
 }
 
-const { type, phoneNumber = '38162601080' } = Astro.props;
+const { type, phoneNumber = '3815435205' } = Astro.props;
 
 const ctaConfig = {
   phone: {
     href: `tel:+${phoneNumber}`,
-    icon: '/img/icons/bi_phone-fill.svg',
-    text: t('cta'),
+    icon: '/img/icons/regular/bi_phone-fill.svg',
+    text: 'Pozovite',
     alt: 'Phone icon',
   },
   viber: {
     href: `viber://contact/?number=%2B${phoneNumber}`,
-    icon: '/img/icons/viber-white.svg',
-    text: t('cta-2'),
+    icon: '/img/icons/regular/viber-white.svg',
+    text: 'Pozovite',
     alt: 'Viber icon',
   },
 };
@@ -37,13 +37,13 @@ const config = ctaConfig[type];
     display: flex;
     align-items: center;
     gap: 10px;
-    background-color: var(--ember-400);
+    background-color: var(--primary);
     color: white;
     padding: 12px 24px;
     border-radius: var(--rounded-full);
     text-decoration: none;
     font-weight: 500;
-    box-shadow: var(--ember-100) 0px 20px 30px -10px;
+    box-shadow: var(--primary-200) 0px 20px 30px -10px;
     transition: box-shadow 0.6s ease;
   }
 
@@ -54,5 +54,11 @@ const config = ctaConfig[type];
   img {
     width: 20px;
     height: auto;
+  }
+
+  @media (min-width: 768px) {
+    a {
+      display: none;
+    }
   }
 </style>
