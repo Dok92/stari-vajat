@@ -4,7 +4,6 @@ import bg from '../../assets/hero-bg.webp';
 import coffee from '../../assets/coffee-go.webp';
 import coke from '../../assets/coke-glass.webp';
 import pizza from '../../assets/food/pizza.webp';
-import pancaces from '../../assets/food/pancaces-plate.webp';
 import gulas from '../../assets/food/gulas.webp';
 import CTA2 from '../cta/CTA2.astro';
 ---
@@ -14,7 +13,7 @@ import CTA2 from '../cta/CTA2.astro';
   <div class='text'>
     <h1>Stari Vajat</h1>
     <h2>Ukus domaće kuhinje na dohvat ruke</h2>
-    <CTA2 type='phone' />
+    <CTA2 />
   </div>
 
   <div class='presentation'>
@@ -26,7 +25,7 @@ import CTA2 from '../cta/CTA2.astro';
     </div>
     <Image src={coke} class='drink coke' alt='koka kola' />
     <img src='/img/icons/tray.svg' class='tray bottom' alt='' />
-    <Image src={pancaces} class='plate pancaces' alt='stari vajat palačinke' />
+    <Image src={gulas} class='plate gulas' alt='juneći gulaš u tanjiru' />
     <div class='description' id='bottom'>
       <p class='headline'>Kuvana Jela</p>
       <p class='note'>Juneći gulaš, Ćufte u paradajz sosu, Pasulj sa rebrima i slaninom i dr.</p>
@@ -64,16 +63,6 @@ import CTA2 from '../cta/CTA2.astro';
       font-size: var(--fs-500);
       font-weight: 500;
       margin-top: 0;
-    }
-
-    .btn {
-      padding: 10px 16px;
-      background: var(--primary);
-      color: white;
-      text-decoration: none;
-      border-radius: var(--rounded-full);
-      font-size: var(--fs-300);
-      /* font-weight: 600; */
     }
 
     .tray {
@@ -124,7 +113,7 @@ import CTA2 from '../cta/CTA2.astro';
       }
     }
 
-    @keyframes slideInPancaces {
+    @keyframes slideIngulas {
       from {
         transform: translate(-300%, 300%);
         visibility: hidden;
@@ -150,11 +139,11 @@ import CTA2 from '../cta/CTA2.astro';
       animation: 2s slideInPizza 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
     }
 
-    .pancaces {
+    .gulas {
       right: 29em;
       top: 32em;
       visibility: hidden;
-      animation: 2s slideInPancaces 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+      animation: 2s slideIngulas 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
     }
 
     .drink {
@@ -266,6 +255,8 @@ import CTA2 from '../cta/CTA2.astro';
       .presentation {
         position: relative;
         width: 100%;
+        isolation: isolate;
+        z-index: 1;
       }
 
       .tray {
@@ -297,7 +288,7 @@ import CTA2 from '../cta/CTA2.astro';
         left: 0.5em;
       }
 
-      .pancaces {
+      .gulas {
         bottom: 8em;
         right: 1em;
       }
