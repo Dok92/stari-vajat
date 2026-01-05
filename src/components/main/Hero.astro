@@ -326,5 +326,64 @@ import CTA2 from '../cta/CTA2.astro';
         bottom: 2em;
       }
     }
+
+    @media screen and (max-width: 360px) {
+      .text {
+        padding-top: var(--space-300);
+      }
+      h1 {
+        font-size: 4rem;
+      }
+
+      h2 {
+        font-size: 20px;
+        margin-bottom: 1.5rem;
+      }
+
+      .tray {
+        width: 484px;
+      }
+
+      .tray.top {
+        bottom: 17em;
+        left: 1em;
+      }
+
+      .tray.bottom {
+        right: 1em;
+        bottom: -5em;
+      }
+
+      .plate {
+        width: 10.12rem;
+      }
+
+      .gulas {
+        bottom: 10em;
+        right: 1em;
+      }
+
+      .coke {
+        width: 84px;
+        bottom: 14em;
+        right: -2em;
+      }
+
+      .coffee {
+        width: 4.84rem;
+        bottom: 9em;
+        left: 1em;
+      }
+
+      .description#top {
+        left: 9.4em;
+        bottom: 21em;
+      }
+
+      .description#bottom {
+        right: 8em;
+        bottom: 3.5em;
+      }
+    }
   </style>
 </section>
