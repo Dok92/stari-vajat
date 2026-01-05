@@ -58,11 +58,6 @@ import gulas from '../../assets/food/gulas.webp';
     padding-top: 150px;
   }
 
-  .presentation {
-    width: 300px;
-    height: 550px;
-  }
-
   .tray {
     position: absolute;
     z-index: 3;
@@ -70,15 +65,15 @@ import gulas from '../../assets/food/gulas.webp';
   }
 
   .tray.top {
-    /* transform: rotate(180deg); */
     right: -18em;
     top: -20em;
+    /* display: none; */
     animation: slideInTopRight 2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
   }
 
   .tray.bottom {
     right: 30em;
-    bottom: -20em;
+    top: 35em;
     animation: slideInBottomLeft 2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
   }
 
@@ -153,6 +148,7 @@ import gulas from '../../assets/food/gulas.webp';
   .coke {
     right: 14em;
     top: 16em;
+    height: auto;
     animation: fadeInRight 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 1.3s forwards;
   }
 
@@ -225,9 +221,59 @@ import gulas from '../../assets/food/gulas.webp';
     }
   }
 
-  @media (max-width: 1800px) {
+  @media screen and (max-width: 768px) {
+    .text {
+      padding-left: var(--x-spacing-mobile);
+      padding-top: var(--space-400);
+    }
+
+    h1 {
+      font-size: 5rem;
+    }
+
+    .tray {
+      width: 550px;
+    }
+
+    .tray.top {
+      top: 5em;
+    }
+
+    .tray.bottom {
+      right: 3em;
+      top:;
+    }
+
     .plate {
-      width: calc(current * 0.8);
+      width: 11.5rem;
+      filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
+    }
+
+    .pizza {
+    }
+
+    .pancaces {
+    }
+
+    .drink {
+    }
+
+    .coke {
+      width: 100px;
+    }
+
+    .coffee {
+      width: 5.5rem;
+    }
+
+    .description {
+      width: 150px;
+    }
+
+    .description#top {
+    }
+
+    .description#bottom {
     }
   }
 </style>
