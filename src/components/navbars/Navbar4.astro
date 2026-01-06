@@ -13,12 +13,12 @@ const navLinks = [
 <header class='navbar'>
   <div class='navbar-inner'>
     <div class='navbar-cta'>
-      <button class='btn-default btn-get-in-touch' data-contact-btn type='button'>
+      <a href='mailto:starivajat@starivajat.rs' class='btn-default btn-get-in-touch' data-contact-btn type='button'>
         <span class='btn-default-inner'>
-          <span class='btn-default-text'>Pozovite Nas</span>
+          <span class='btn-default-text'>Kontaktirajte Nas</span>
           <span class='btn-default-circle'></span>
         </span>
-      </button>
+      </a>
 
       <button class='navbar-menu-btn' data-menu-btn type='button'>
         <span class='navbar-menu-text'>Meni</span>
@@ -110,6 +110,10 @@ const navLinks = [
     overflow: hidden;
   }
 
+  .navbar span {
+    font-family: 'Poppins';
+  }
+
   .navbar-inner {
     display: flex;
     justify-content: flex-start;
@@ -148,7 +152,7 @@ const navLinks = [
     display: flex;
     align-items: center;
     /* gap: var(--space-300); */
-    width: 280px;
+    width: 310px;
     justify-content: space-between;
     justify-self: end;
   }
@@ -156,8 +160,9 @@ const navLinks = [
   .btn-default {
     border-radius: var(--rounded-full);
     border: none;
-    padding-inline: var(--space-400);
-    padding-block: var(--space-200);
+    /* padding-inline: var(--space-400);
+    padding-block: var(--space-200); */
+    padding: 12px 24px;
     background-color: var(--primary);
     color: #fff;
     cursor: pointer;
@@ -176,10 +181,9 @@ const navLinks = [
   .btn-default-text {
     position: relative;
     display: inline-block;
-    text-shadow: 0 1em 0 currentColor;
+    text-shadow: 0 1.2em 0 currentColor;
     transform: translateY(0);
-    transition: transform 0.545s cubic-bezier(0.16, 1, 0.3, 1);
-    padding-top: 2px;
+    transition: transform 0.445s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .btn-default-circle {
@@ -195,7 +199,7 @@ const navLinks = [
   }
 
   .btn-default:hover .btn-default-text {
-    transform: translateY(-1em);
+    transform: translateY(-1.2em);
   }
 
   .btn-default:hover .btn-default-circle {
@@ -441,7 +445,7 @@ const navLinks = [
     font-weight: 700;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 865px) {
     .navbar {
       padding-inline: var(--x-spacing-mobile);
     }
@@ -460,7 +464,7 @@ const navLinks = [
     .navbar-mini-menu {
       padding: 0.75rem;
       border-radius: 33px;
-      background: #d9d9d9;
+      background: var(--dark-main);
     }
 
     .navbar-menu-text {

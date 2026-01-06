@@ -179,24 +179,24 @@ import CTA2 from '../cta/CTA2.astro';
     }
 
     .description#top {
-      top: 4.5em;
-      right: 16em;
+      top: 2em;
+      right: 15em;
     }
 
     .description#bottom {
-      top: 47em;
-      right: 47em;
+      top: 45em;
+      right: 47.5em;
     }
 
     .headline {
-      font-size: var(--fs-300);
+      font-size: 1.5rem;
       font-weight: 600;
-      color: var(--text-100);
+      color: var(--text-200);
     }
 
     .note {
       color: var(--text-300);
-      font-size: var(--fs-300);
+      font-size: 1.5rem;
       font-family: 'Sofia Sans Extra Condensed Variable', sans-serif;
     }
 
@@ -229,7 +229,421 @@ import CTA2 from '../cta/CTA2.astro';
       }
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1900px) {
+      .hero {
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .text {
+        padding-left: var(--x-spacing-desktop);
+        padding-top: var(--space-800);
+      }
+
+      h1 {
+        font-size: 5rem;
+      }
+
+      h2 {
+        font-size: 24px;
+        color: var(--text-900);
+        font-weight: 500;
+        text-transform: none;
+        /* padding-right: 1rem; */
+        margin-bottom: 2rem;
+      }
+
+      .presentation {
+        position: relative;
+        width: 100%;
+        isolation: isolate;
+        z-index: 1;
+      }
+
+      .tray {
+        width: 900px;
+        position: absolute;
+      }
+
+      .tray.top {
+        top: inherit;
+        bottom: 31em;
+        left: inherit;
+        right: -30em;
+      }
+
+      .tray.bottom {
+        top: inherit;
+        right: 3em;
+        bottom: -15em;
+      }
+
+      .plate {
+        width: 17.5rem;
+        filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
+        position: absolute;
+        top: inherit;
+      }
+
+      .pizza {
+        bottom: 32em;
+        left: inherit;
+        right: 10em;
+      }
+
+      .gulas {
+        bottom: 13em;
+        right: 1em;
+      }
+
+      .drink {
+        top: inherit;
+      }
+
+      .coke {
+        width: 135px;
+        bottom: 25em;
+        right: 0em;
+      }
+
+      .coffee {
+        width: 7.5rem;
+        right: 18em;
+        bottom: 19em;
+        left: inherit;
+      }
+
+      .description {
+        width: 200px;
+      }
+
+      .description#top {
+        left: inherit;
+        right: 0;
+        bottom: 40.5em;
+        top: inherit;
+      }
+
+      .description#bottom {
+        top: inherit;
+        right: 15em;
+        bottom: 7em;
+      }
+
+      .note {
+        font-size: var(--fs-400);
+      }
+    }
+
+    @media screen and (max-width: 1024px) {
+      .hero {
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .text {
+        padding-left: var(--x-spacing-desktop);
+        padding-top: var(--space-800);
+      }
+
+      h1 {
+        font-size: 5rem;
+      }
+
+      h2 {
+        font-size: 24px;
+        color: var(--text-900);
+        font-weight: 500;
+        text-transform: none;
+        /* padding-right: 1rem; */
+        margin-bottom: 2rem;
+      }
+
+      .presentation {
+        position: relative;
+        width: 100%;
+        isolation: isolate;
+        z-index: 1;
+      }
+
+      .tray {
+        width: 700px;
+        position: absolute;
+      }
+
+      .tray.top {
+        top: inherit;
+        bottom: 24em;
+        left: inherit;
+        right: -19em;
+      }
+
+      .tray.bottom {
+        top: inherit;
+        right: 3em;
+        bottom: -9em;
+      }
+
+      .plate {
+        width: 14.5rem;
+        filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
+        position: absolute;
+        top: inherit;
+      }
+
+      .pizza {
+        bottom: 25em;
+        left: inherit;
+        right: 11em;
+      }
+
+      .gulas {
+        bottom: 13em;
+        right: 1em;
+      }
+
+      .drink {
+        top: inherit;
+      }
+
+      .coke {
+        width: 125px;
+        bottom: 20em;
+        right: 0em;
+      }
+
+      .coffee {
+        width: 6.5rem;
+        right: 18em;
+        bottom: 13em;
+        left: inherit;
+      }
+
+      .description {
+        width: 200px;
+      }
+
+      .description#top {
+        left: inherit;
+        right: 0;
+        bottom: 31.5em;
+        top: inherit;
+      }
+
+      .description#bottom {
+        top: inherit;
+        right: 12em;
+        bottom: 7em;
+      }
+
+      .note {
+        font-size: var(--fs-400);
+      }
+    }
+
+    @media screen and (max-width: 767px) {
+      .hero {
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .text {
+        padding-left: var(--x-spacing-mobile);
+        padding-top: var(--space-400);
+      }
+
+      h1 {
+        font-size: 5rem;
+      }
+
+      h2 {
+        font-size: 24px;
+        color: var(--text-900);
+        font-weight: 500;
+        text-transform: none;
+        /* padding-right: 1rem; */
+        margin-bottom: 2rem;
+      }
+
+      .presentation {
+        position: relative;
+        width: 100%;
+        isolation: isolate;
+        z-index: 1;
+      }
+
+      .tray {
+        width: 600px;
+        position: absolute;
+      }
+
+      .tray.top {
+        top: inherit;
+        bottom: 25em;
+        left: 16em;
+      }
+
+      .tray.bottom {
+        top: inherit;
+        right: 7em;
+        bottom: -6em;
+      }
+
+      .plate {
+        width: 12.5rem;
+        filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
+        position: absolute;
+        top: inherit;
+      }
+
+      .pizza {
+        bottom: 26em;
+        left: 15.5em;
+      }
+
+      .gulas {
+        bottom: 13em;
+        right: 6em;
+      }
+
+      .drink {
+        top: inherit;
+      }
+
+      .coke {
+        width: 125px;
+        bottom: 20em;
+        right: 0em;
+      }
+
+      .coffee {
+        width: 6.5rem;
+        right: inherit;
+        bottom: 13em;
+        left: 13em;
+      }
+
+      .description {
+        width: 200px;
+      }
+
+      .description#top {
+        left: 26em;
+        bottom: 31.5em;
+        top: inherit;
+      }
+
+      .description#bottom {
+        top: inherit;
+        right: 15em;
+        bottom: 6em;
+      }
+
+      .note {
+        font-size: var(--fs-400);
+      }
+    }
+
+    @media screen and (max-width: 630px) {
+      .hero {
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .text {
+        padding-left: var(--x-spacing-mobile);
+        padding-top: var(--space-400);
+      }
+
+      h1 {
+        font-size: 5rem;
+      }
+
+      h2 {
+        font-size: 24px;
+        color: var(--text-900);
+        font-weight: 500;
+        text-transform: none;
+        /* padding-right: 1rem; */
+        margin-bottom: 2rem;
+      }
+
+      .presentation {
+        position: relative;
+        width: 100%;
+        isolation: isolate;
+        z-index: 1;
+      }
+
+      .tray {
+        width: 550px;
+        position: absolute;
+      }
+
+      .tray.top {
+        top: inherit;
+        bottom: 24em;
+        left: 10em;
+      }
+
+      .tray.bottom {
+        top: inherit;
+        right: 7em;
+        bottom: -6em;
+      }
+
+      .plate {
+        width: 11.5rem;
+        filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
+        position: absolute;
+        top: inherit;
+      }
+
+      .pizza {
+        bottom: 25em;
+        left: 9.5em;
+      }
+
+      .gulas {
+        bottom: 11em;
+        right: 6em;
+      }
+
+      .drink {
+        top: inherit;
+      }
+
+      .coke {
+        width: 95px;
+        bottom: 16em;
+        right: 0em;
+      }
+
+      .coffee {
+        width: 5.5rem;
+        right: inherit;
+        bottom: 13em;
+        left: 8em;
+      }
+
+      .description {
+        width: 160px;
+      }
+
+      .description#top {
+        left: 20em;
+        bottom: 29.5em;
+        top: inherit;
+      }
+
+      .description#bottom {
+        top: inherit;
+        right: 14em;
+        bottom: 5em;
+      }
+
+      .note {
+        font-size: var(--fs-300);
+      }
+    }
+
+    @media screen and (max-width: 490px) {
       .hero {
         flex-direction: column;
         justify-content: space-between;
@@ -325,9 +739,13 @@ import CTA2 from '../cta/CTA2.astro';
         right: 10em;
         bottom: 2em;
       }
+
+      .note {
+        font-size: var(--fs-300);
+      }
     }
 
-    @media screen and (max-width: 360px) {
+    @media screen and (max-width: 359px) {
       .text {
         padding-top: var(--space-300);
       }
