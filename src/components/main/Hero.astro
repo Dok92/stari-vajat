@@ -6,6 +6,7 @@ import coke from '../../assets/coke-glass.webp';
 import pizza from '../../assets/food/pizza.webp';
 import gulas from '../../assets/food/gulas.webp';
 import CTA2 from '../cta/CTA2.astro';
+import bgPatternTop from '../../assets/white-bg-pattern-top.webp';
 ---
 
 <section class='hero'>
@@ -32,776 +33,794 @@ import CTA2 from '../cta/CTA2.astro';
     </div>
     <Image src={coffee} class='drink coffee' alt='espreso kafa' />
   </div>
+  <Image src={bgPatternTop} alt='' class='bg-pattern top' />
+</section>
+<style>
+  .hero {
+    width: 100%;
+    display: flex;
+    min-height: 100svh;
+    overflow: hidden;
+  }
 
-  <style>
+  .hero-img {
+    width: 100%;
+    height: 100%;
+    opacity: 40%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 1;
+  }
+
+  :not(.hero-img) {
+    z-index: 2;
+  }
+
+  .bg-pattern {
+    position: absolute;
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    margin-bottom: -2px;
+  }
+
+  .text {
+    padding: var(--x-spacing-desktop);
+    padding-top: 150px;
+  }
+
+  h2 {
+    font-size: var(--fs-500);
+    font-weight: 500;
+    margin-top: 0;
+  }
+
+  .tray {
+    position: absolute;
+    z-index: 3;
+    width: 1100px;
+  }
+
+  .tray.top {
+    right: -18em;
+    top: -20em;
+    /* display: none; */
+    animation: slideInTopRight 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+
+  .tray.bottom {
+    right: 30em;
+    top: 35em;
+    animation: slideInBottomLeft 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+
+  @keyframes slideInTopRight {
+    from {
+      transform: rotate(180deg) translate(-100%, 100%);
+    }
+    to {
+      transform: rotate(180deg) translate(0, 0);
+    }
+  }
+
+  @keyframes slideInBottomLeft {
+    from {
+      transform: translate(-100%, 100%);
+    }
+    to {
+      transform: translate(0, 0);
+    }
+  }
+
+  @keyframes slideInPizza {
+    from {
+      transform: translate(300%, -300%);
+      visibility: hidden;
+    }
+    to {
+      transform: translate(0, 0);
+      visibility: visible;
+    }
+  }
+
+  @keyframes slideIngulas {
+    from {
+      transform: translate(-300%, 300%);
+      visibility: hidden;
+    }
+    to {
+      transform: translate(0, 0);
+      visibility: visible;
+    }
+  }
+
+  .plate {
+    position: absolute;
+    z-index: 3;
+    width: 23rem;
+    height: auto;
+    filter: drop-shadow(25px 25px 15px rgba(0, 0, 0, 0.7));
+  }
+
+  .pizza {
+    right: 29em;
+    top: 9em;
+    visibility: hidden;
+    animation: 1.5s slideInPizza 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+
+  .gulas {
+    right: 29em;
+    top: 32em;
+    visibility: hidden;
+    animation: 1.5s slideIngulas 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+
+  .drink {
+    position: absolute !important;
+    z-index: 3;
+    opacity: 0;
+  }
+
+  .coke {
+    right: 14em;
+    top: 16em;
+    height: auto;
+    animation: fadeInRight 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 1.3s forwards;
+  }
+
+  .coffee {
+    right: 47em;
+    top: 26em;
+    width: 11rem;
+    height: auto;
+    z-index: 2;
+    animation: fadeInLeft 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 1.3s forwards;
+  }
+
+  .description {
+    position: absolute;
+    opacity: 0;
+    z-index: 10;
+    transform: rotate(327deg);
+    width: 250px;
+    text-align: center;
+    animation: fadeIn 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 2.3s forwards;
+  }
+
+  .description p {
+    margin: 0;
+  }
+
+  .description#top {
+    top: 4em;
+    right: 15em;
+  }
+
+  .description#bottom {
+    top: 47em;
+    right: 47.5em;
+  }
+
+  .headline {
+    font-size: 1.5rem;
+    padding-bottom: var(--space-300);
+    font-weight: 600;
+    color: var(--text-200);
+  }
+
+  .note {
+    color: var(--text-300);
+    font-size: 1.5rem;
+    font-family: 'Sofia Sans Extra Condensed Variable', sans-serif;
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 1900px) {
     .hero {
-      width: 100%;
-      display: flex;
-      min-height: 100svh;
-      overflow: hidden;
+      flex-direction: column;
+      justify-content: space-between;
     }
-
-    .hero-img {
-      width: 100%;
-      height: 100%;
-      opacity: 40%;
-      object-fit: cover;
-      position: absolute;
-      z-index: 1;
-    }
-
-    :not(.hero-img) {
-      z-index: 2;
-    }
-
     .text {
-      padding: var(--x-spacing-desktop);
-      padding-top: 150px;
+      padding-left: var(--x-spacing-desktop);
+      padding-top: var(--section-spacing-xl);
+    }
+
+    h1 {
+      font-size: 5rem;
     }
 
     h2 {
-      font-size: var(--fs-500);
+      font-size: 24px;
+      color: var(--text-900);
       font-weight: 500;
-      margin-top: 0;
+      text-transform: none;
+      /* padding-right: 1rem; */
+      margin-bottom: 2rem;
+    }
+
+    .presentation {
+      position: relative;
+      width: 100%;
+      isolation: isolate;
+      z-index: 1;
     }
 
     .tray {
+      width: 900px;
       position: absolute;
-      z-index: 3;
-      width: 1100px;
     }
 
     .tray.top {
-      right: -18em;
-      top: -20em;
-      /* display: none; */
-      animation: slideInTopRight 2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+      top: inherit;
+      bottom: 31em;
+      left: inherit;
+      right: -30em;
     }
 
     .tray.bottom {
-      right: 30em;
-      top: 35em;
-      animation: slideInBottomLeft 2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-    }
-
-    @keyframes slideInTopRight {
-      from {
-        transform: rotate(180deg) translate(-100%, 100%);
-      }
-      to {
-        transform: rotate(180deg) translate(0, 0);
-      }
-    }
-
-    @keyframes slideInBottomLeft {
-      from {
-        transform: translate(-100%, 100%);
-      }
-      to {
-        transform: translate(0, 0);
-      }
-    }
-
-    @keyframes slideInPizza {
-      from {
-        transform: translate(300%, -300%);
-        visibility: hidden;
-      }
-      to {
-        transform: translate(0, 0);
-        visibility: visible;
-      }
-    }
-
-    @keyframes slideIngulas {
-      from {
-        transform: translate(-300%, 300%);
-        visibility: hidden;
-      }
-      to {
-        transform: translate(0, 0);
-        visibility: visible;
-      }
+      top: inherit;
+      right: 3em;
+      bottom: -15em;
     }
 
     .plate {
+      width: 17.5rem;
+      filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
       position: absolute;
-      z-index: 3;
-      width: 23rem;
-      height: auto;
-      filter: drop-shadow(25px 25px 15px rgba(0, 0, 0, 0.7));
+      top: inherit;
     }
 
     .pizza {
-      right: 29em;
-      top: 9em;
-      visibility: hidden;
-      animation: 2s slideInPizza 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+      bottom: 32em;
+      left: inherit;
+      right: 10em;
     }
 
     .gulas {
-      right: 29em;
-      top: 32em;
-      visibility: hidden;
-      animation: 2s slideIngulas 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+      bottom: 13em;
+      right: 1em;
     }
 
     .drink {
-      position: absolute !important;
-      z-index: 3;
-      opacity: 0;
+      top: inherit;
     }
 
     .coke {
-      right: 14em;
-      top: 16em;
-      height: auto;
-      animation: fadeInRight 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 1.3s forwards;
+      width: 135px;
+      bottom: 25em;
+      right: 0em;
     }
 
     .coffee {
-      right: 47em;
-      top: 26em;
-      width: 11rem;
-      height: auto;
-      z-index: 2;
-      animation: fadeInLeft 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 1.3s forwards;
+      width: 7.5rem;
+      right: 18em;
+      bottom: 19em;
+      left: inherit;
     }
 
     .description {
-      position: absolute;
-      opacity: 0;
-      z-index: 10;
-      transform: rotate(327deg);
-      width: 250px;
-      text-align: center;
-      animation: fadeIn 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 2.3s forwards;
+      width: 200px;
     }
 
     .description#top {
-      top: 2em;
-      right: 15em;
+      left: inherit;
+      right: 0;
+      bottom: 41.5em;
+      top: inherit;
     }
 
     .description#bottom {
-      top: 45em;
-      right: 47.5em;
+      top: inherit;
+      right: 15em;
+      bottom: 9em;
     }
 
     .headline {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: var(--text-200);
+      font-size: var(--fs-400);
     }
 
     .note {
-      color: var(--text-300);
-      font-size: 1.5rem;
-      font-family: 'Sofia Sans Extra Condensed Variable', sans-serif;
+      font-size: var(--fs-400);
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .hero {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .text {
+      padding-left: var(--x-spacing-desktop);
+      padding-top: var(--section-spacing-xl);
     }
 
-    @keyframes fadeInRight {
-      from {
-        opacity: 0;
-        transform: translateX(100px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    @keyframes fadeInLeft {
-      from {
-        opacity: 0;
-        transform: translateX(-100px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+    h1 {
+      font-size: 5rem;
     }
 
-    @media screen and (max-width: 1900px) {
-      .hero {
-        flex-direction: column;
-        justify-content: space-between;
-      }
-      .text {
-        padding-left: var(--x-spacing-desktop);
-        padding-top: var(--space-800);
-      }
-
-      h1 {
-        font-size: 5rem;
-      }
-
-      h2 {
-        font-size: 24px;
-        color: var(--text-900);
-        font-weight: 500;
-        text-transform: none;
-        /* padding-right: 1rem; */
-        margin-bottom: 2rem;
-      }
-
-      .presentation {
-        position: relative;
-        width: 100%;
-        isolation: isolate;
-        z-index: 1;
-      }
-
-      .tray {
-        width: 900px;
-        position: absolute;
-      }
-
-      .tray.top {
-        top: inherit;
-        bottom: 31em;
-        left: inherit;
-        right: -30em;
-      }
-
-      .tray.bottom {
-        top: inherit;
-        right: 3em;
-        bottom: -15em;
-      }
-
-      .plate {
-        width: 17.5rem;
-        filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
-        position: absolute;
-        top: inherit;
-      }
-
-      .pizza {
-        bottom: 32em;
-        left: inherit;
-        right: 10em;
-      }
-
-      .gulas {
-        bottom: 13em;
-        right: 1em;
-      }
-
-      .drink {
-        top: inherit;
-      }
-
-      .coke {
-        width: 135px;
-        bottom: 25em;
-        right: 0em;
-      }
-
-      .coffee {
-        width: 7.5rem;
-        right: 18em;
-        bottom: 19em;
-        left: inherit;
-      }
-
-      .description {
-        width: 200px;
-      }
-
-      .description#top {
-        left: inherit;
-        right: 0;
-        bottom: 40.5em;
-        top: inherit;
-      }
-
-      .description#bottom {
-        top: inherit;
-        right: 15em;
-        bottom: 7em;
-      }
-
-      .note {
-        font-size: var(--fs-400);
-      }
+    h2 {
+      font-size: 24px;
+      color: var(--text-900);
+      font-weight: 500;
+      text-transform: none;
+      /* padding-right: 1rem; */
+      margin-bottom: 2rem;
     }
 
-    @media screen and (max-width: 1024px) {
-      .hero {
-        flex-direction: column;
-        justify-content: space-between;
-      }
-      .text {
-        padding-left: var(--x-spacing-desktop);
-        padding-top: var(--space-800);
-      }
-
-      h1 {
-        font-size: 5rem;
-      }
-
-      h2 {
-        font-size: 24px;
-        color: var(--text-900);
-        font-weight: 500;
-        text-transform: none;
-        /* padding-right: 1rem; */
-        margin-bottom: 2rem;
-      }
-
-      .presentation {
-        position: relative;
-        width: 100%;
-        isolation: isolate;
-        z-index: 1;
-      }
-
-      .tray {
-        width: 700px;
-        position: absolute;
-      }
-
-      .tray.top {
-        top: inherit;
-        bottom: 24em;
-        left: inherit;
-        right: -19em;
-      }
-
-      .tray.bottom {
-        top: inherit;
-        right: 3em;
-        bottom: -9em;
-      }
-
-      .plate {
-        width: 14.5rem;
-        filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
-        position: absolute;
-        top: inherit;
-      }
-
-      .pizza {
-        bottom: 25em;
-        left: inherit;
-        right: 11em;
-      }
-
-      .gulas {
-        bottom: 13em;
-        right: 1em;
-      }
-
-      .drink {
-        top: inherit;
-      }
-
-      .coke {
-        width: 125px;
-        bottom: 20em;
-        right: 0em;
-      }
-
-      .coffee {
-        width: 6.5rem;
-        right: 18em;
-        bottom: 13em;
-        left: inherit;
-      }
-
-      .description {
-        width: 200px;
-      }
-
-      .description#top {
-        left: inherit;
-        right: 0;
-        bottom: 31.5em;
-        top: inherit;
-      }
-
-      .description#bottom {
-        top: inherit;
-        right: 12em;
-        bottom: 7em;
-      }
-
-      .note {
-        font-size: var(--fs-400);
-      }
+    .presentation {
+      position: relative;
+      width: 100%;
+      isolation: isolate;
+      z-index: 1;
     }
 
-    @media screen and (max-width: 767px) {
-      .hero {
-        flex-direction: column;
-        justify-content: space-between;
-      }
-      .text {
-        padding-left: var(--x-spacing-mobile);
-        padding-top: var(--space-400);
-      }
-
-      h1 {
-        font-size: 5rem;
-      }
-
-      h2 {
-        font-size: 24px;
-        color: var(--text-900);
-        font-weight: 500;
-        text-transform: none;
-        /* padding-right: 1rem; */
-        margin-bottom: 2rem;
-      }
-
-      .presentation {
-        position: relative;
-        width: 100%;
-        isolation: isolate;
-        z-index: 1;
-      }
-
-      .tray {
-        width: 600px;
-        position: absolute;
-      }
-
-      .tray.top {
-        top: inherit;
-        bottom: 25em;
-        left: 16em;
-      }
-
-      .tray.bottom {
-        top: inherit;
-        right: 7em;
-        bottom: -6em;
-      }
-
-      .plate {
-        width: 12.5rem;
-        filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
-        position: absolute;
-        top: inherit;
-      }
-
-      .pizza {
-        bottom: 26em;
-        left: 15.5em;
-      }
-
-      .gulas {
-        bottom: 13em;
-        right: 6em;
-      }
-
-      .drink {
-        top: inherit;
-      }
-
-      .coke {
-        width: 125px;
-        bottom: 20em;
-        right: 0em;
-      }
-
-      .coffee {
-        width: 6.5rem;
-        right: inherit;
-        bottom: 13em;
-        left: 13em;
-      }
-
-      .description {
-        width: 200px;
-      }
-
-      .description#top {
-        left: 26em;
-        bottom: 31.5em;
-        top: inherit;
-      }
-
-      .description#bottom {
-        top: inherit;
-        right: 15em;
-        bottom: 6em;
-      }
-
-      .note {
-        font-size: var(--fs-400);
-      }
+    .tray {
+      width: 700px;
+      position: absolute;
     }
 
-    @media screen and (max-width: 630px) {
-      .hero {
-        flex-direction: column;
-        justify-content: space-between;
-      }
-      .text {
-        padding-left: var(--x-spacing-mobile);
-        padding-top: var(--space-400);
-      }
-
-      h1 {
-        font-size: 5rem;
-      }
-
-      h2 {
-        font-size: 24px;
-        color: var(--text-900);
-        font-weight: 500;
-        text-transform: none;
-        /* padding-right: 1rem; */
-        margin-bottom: 2rem;
-      }
-
-      .presentation {
-        position: relative;
-        width: 100%;
-        isolation: isolate;
-        z-index: 1;
-      }
-
-      .tray {
-        width: 550px;
-        position: absolute;
-      }
-
-      .tray.top {
-        top: inherit;
-        bottom: 24em;
-        left: 10em;
-      }
-
-      .tray.bottom {
-        top: inherit;
-        right: 7em;
-        bottom: -6em;
-      }
-
-      .plate {
-        width: 11.5rem;
-        filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
-        position: absolute;
-        top: inherit;
-      }
-
-      .pizza {
-        bottom: 25em;
-        left: 9.5em;
-      }
-
-      .gulas {
-        bottom: 11em;
-        right: 6em;
-      }
-
-      .drink {
-        top: inherit;
-      }
-
-      .coke {
-        width: 95px;
-        bottom: 16em;
-        right: 0em;
-      }
-
-      .coffee {
-        width: 5.5rem;
-        right: inherit;
-        bottom: 13em;
-        left: 8em;
-      }
-
-      .description {
-        width: 160px;
-      }
-
-      .description#top {
-        left: 20em;
-        bottom: 29.5em;
-        top: inherit;
-      }
-
-      .description#bottom {
-        top: inherit;
-        right: 14em;
-        bottom: 5em;
-      }
-
-      .note {
-        font-size: var(--fs-300);
-      }
+    .tray.top {
+      top: inherit;
+      bottom: 24em;
+      left: inherit;
+      right: -19em;
     }
 
-    @media screen and (max-width: 490px) {
-      .hero {
-        flex-direction: column;
-        justify-content: space-between;
-      }
-      .text {
-        padding-left: var(--x-spacing-mobile);
-        padding-top: var(--space-400);
-      }
-
-      h1 {
-        font-size: 5rem;
-      }
-
-      h2 {
-        font-size: 24px;
-        color: var(--text-900);
-        font-weight: 500;
-        text-transform: none;
-        /* padding-right: 1rem; */
-        margin-bottom: 2rem;
-      }
-
-      .presentation {
-        position: relative;
-        width: 100%;
-        isolation: isolate;
-        z-index: 1;
-      }
-
-      .tray {
-        width: 550px;
-        position: absolute;
-      }
-
-      .tray.top {
-        top: inherit;
-        bottom: 17em;
-        left: 1em;
-      }
-
-      .tray.bottom {
-        top: inherit;
-        right: 1em;
-        bottom: -8em;
-      }
-
-      .plate {
-        width: 11.5rem;
-        filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
-        position: absolute;
-        top: inherit;
-      }
-
-      .pizza {
-        bottom: 18em;
-        left: 0.5em;
-      }
-
-      .gulas {
-        bottom: 8em;
-        right: 1em;
-      }
-
-      .drink {
-        top: inherit;
-      }
-
-      .coke {
-        width: 95px;
-        bottom: 14em;
-        right: 0em;
-      }
-
-      .coffee {
-        width: 5.5rem;
-        right: inherit;
-        bottom: 8em;
-        left: 3em;
-      }
-
-      .description {
-        width: 160px;
-      }
-
-      .description#top {
-        left: 11em;
-        bottom: 22.5em;
-        top: inherit;
-      }
-
-      .description#bottom {
-        top: inherit;
-        right: 10em;
-        bottom: 2em;
-      }
-
-      .note {
-        font-size: var(--fs-300);
-      }
+    .tray.bottom {
+      top: inherit;
+      right: 3em;
+      bottom: -9em;
     }
 
-    @media screen and (max-width: 359px) {
-      .text {
-        padding-top: var(--space-300);
-      }
-      h1 {
-        font-size: 4rem;
-      }
-
-      h2 {
-        font-size: 20px;
-        margin-bottom: 1.5rem;
-      }
-
-      .tray {
-        width: 484px;
-      }
-
-      .tray.top {
-        bottom: 17em;
-        left: 1em;
-      }
-
-      .tray.bottom {
-        right: 1em;
-        bottom: -5em;
-      }
-
-      .plate {
-        width: 10.12rem;
-      }
-
-      .gulas {
-        bottom: 10em;
-        right: 1em;
-      }
-
-      .coke {
-        width: 84px;
-        bottom: 14em;
-        right: -2em;
-      }
-
-      .coffee {
-        width: 4.84rem;
-        bottom: 9em;
-        left: 1em;
-      }
-
-      .description#top {
-        left: 9.4em;
-        bottom: 21em;
-      }
-
-      .description#bottom {
-        right: 8em;
-        bottom: 3.5em;
-      }
+    .plate {
+      width: 14.5rem;
+      filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
+      position: absolute;
+      top: inherit;
     }
-  </style>
-</section>
+
+    .pizza {
+      bottom: 25em;
+      left: inherit;
+      right: 11em;
+    }
+
+    .gulas {
+      bottom: 13em;
+      right: 1em;
+    }
+
+    .drink {
+      top: inherit;
+    }
+
+    .coke {
+      width: 125px;
+      bottom: 20em;
+      right: 0em;
+    }
+
+    .coffee {
+      width: 6.5rem;
+      right: 18em;
+      bottom: 13em;
+      left: inherit;
+    }
+
+    .description {
+      width: 200px;
+    }
+
+    .description#top {
+      left: inherit;
+      right: 0;
+      bottom: 33em;
+      top: inherit;
+    }
+
+    .description#bottom {
+      top: inherit;
+      right: 12em;
+      bottom: 8em;
+    }
+
+    .note {
+      font-size: var(--fs-400);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .hero {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .text {
+      padding-left: var(--x-spacing-mobile);
+      padding-top: var(--space-400);
+    }
+
+    h1 {
+      font-size: 5rem;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: var(--text-900);
+      font-weight: 500;
+      text-transform: none;
+      /* padding-right: 1rem; */
+      margin-bottom: 2rem;
+    }
+
+    .presentation {
+      position: relative;
+      width: 100%;
+      isolation: isolate;
+      z-index: 1;
+    }
+
+    .tray {
+      width: 600px;
+      position: absolute;
+    }
+
+    .tray.top {
+      top: inherit;
+      bottom: 25em;
+      left: 16em;
+    }
+
+    .tray.bottom {
+      top: inherit;
+      right: 7em;
+      bottom: -6em;
+    }
+
+    .plate {
+      width: 12.5rem;
+      filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
+      position: absolute;
+      top: inherit;
+    }
+
+    .pizza {
+      bottom: 26em;
+      left: 15.5em;
+    }
+
+    .gulas {
+      bottom: 13em;
+      right: 6em;
+    }
+
+    .drink {
+      top: inherit;
+    }
+
+    .coke {
+      width: 125px;
+      bottom: 20em;
+      right: 0em;
+    }
+
+    .coffee {
+      width: 6.5rem;
+      right: inherit;
+      bottom: 13em;
+      left: 13em;
+    }
+
+    .description {
+      width: 200px;
+    }
+
+    .description#top {
+      left: 26.5em;
+      bottom: 32.5em;
+      top: inherit;
+    }
+
+    .description#bottom {
+      top: inherit;
+      right: 15.5em;
+      bottom: 7.5em;
+    }
+
+    .note {
+      font-size: var(--fs-400);
+    }
+  }
+
+  @media screen and (max-width: 630px) {
+    .hero {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .text {
+      padding-left: var(--x-spacing-mobile);
+      padding-top: var(--space-400);
+    }
+
+    h1 {
+      font-size: 5rem;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: var(--text-900);
+      font-weight: 500;
+      text-transform: none;
+      /* padding-right: 1rem; */
+      margin-bottom: 2rem;
+    }
+
+    .presentation {
+      position: relative;
+      width: 100%;
+      isolation: isolate;
+      z-index: 1;
+    }
+
+    .tray {
+      width: 550px;
+      position: absolute;
+    }
+
+    .tray.top {
+      top: inherit;
+      bottom: 24em;
+      left: 10em;
+    }
+
+    .tray.bottom {
+      top: inherit;
+      right: 7em;
+      bottom: -6em;
+    }
+
+    .plate {
+      width: 11.5rem;
+      filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
+      position: absolute;
+      top: inherit;
+    }
+
+    .pizza {
+      bottom: 25em;
+      left: 9.5em;
+    }
+
+    .gulas {
+      bottom: 11em;
+      right: 6em;
+    }
+
+    .drink {
+      top: inherit;
+    }
+
+    .coke {
+      width: 95px;
+      bottom: 16em;
+      right: 0em;
+    }
+
+    .coffee {
+      width: 5.5rem;
+      right: inherit;
+      bottom: 13em;
+      left: 8em;
+    }
+
+    .description {
+      width: 160px;
+    }
+
+    .description#top {
+      left: 20em;
+      bottom: 30.5em;
+      top: inherit;
+    }
+
+    .description#bottom {
+      top: inherit;
+      right: 15.5em;
+      bottom: 5.5em;
+    }
+
+    .note {
+      font-size: var(--fs-300);
+    }
+  }
+
+  @media screen and (max-width: 490px) {
+    .hero {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .text {
+      padding-left: var(--x-spacing-mobile);
+      padding-top: var(--space-400);
+    }
+
+    h1 {
+      font-size: 5rem;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: var(--text-900);
+      font-weight: 500;
+      text-transform: none;
+      /* padding-right: 1rem; */
+      margin-bottom: 2rem;
+    }
+
+    .presentation {
+      position: relative;
+      width: 100%;
+      isolation: isolate;
+      z-index: 1;
+    }
+
+    .tray {
+      width: 550px;
+      position: absolute;
+    }
+
+    .tray.top {
+      top: inherit;
+      bottom: 17em;
+      left: 1em;
+    }
+
+    .tray.bottom {
+      top: inherit;
+      right: 1em;
+      bottom: -8em;
+    }
+
+    .plate {
+      width: 11.5rem;
+      filter: drop-shadow(12.5px 12.5px 7.5px rgba(0, 0, 0, 0.7));
+      position: absolute;
+      top: inherit;
+    }
+
+    .pizza {
+      bottom: 18em;
+      left: 0.5em;
+    }
+
+    .gulas {
+      bottom: 8em;
+      right: 1em;
+    }
+
+    .drink {
+      top: inherit;
+    }
+
+    .coke {
+      width: 95px;
+      bottom: 14em;
+      right: 0em;
+    }
+
+    .coffee {
+      width: 5.5rem;
+      right: inherit;
+      bottom: 8em;
+      left: 3em;
+    }
+
+    .description {
+      width: 160px;
+    }
+
+    .description#top {
+      left: 11em;
+      bottom: 23.5em;
+      top: inherit;
+    }
+
+    .description#bottom {
+      top: inherit;
+      right: 10em;
+      bottom: 3em;
+    }
+
+    .note {
+      font-size: var(--fs-300);
+    }
+  }
+
+  @media screen and (max-width: 359px) {
+    .text {
+      padding-top: var(--space-300);
+    }
+    h1 {
+      font-size: 4rem;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-bottom: 1.5rem;
+    }
+
+    .tray {
+      width: 484px;
+    }
+
+    .tray.top {
+      bottom: 17em;
+      left: 1em;
+    }
+
+    .tray.bottom {
+      right: 1em;
+      bottom: -5em;
+    }
+
+    .plate {
+      width: 10.12rem;
+    }
+
+    .gulas {
+      bottom: 10em;
+      right: 1em;
+    }
+
+    .coke {
+      width: 84px;
+      bottom: 14em;
+      right: -2em;
+    }
+
+    .coffee {
+      width: 4.84rem;
+      bottom: 9em;
+      left: 1em;
+    }
+
+    .description#top {
+      left: 9.4em;
+      bottom: 22.5em;
+    }
+
+    .description#bottom {
+      right: 8.5em;
+      bottom: 4.5em;
+    }
+  }
+</style>

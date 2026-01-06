@@ -147,7 +147,7 @@ const { title, metaTitle, metaDescription, ogTitle, canonical } = Astro.props;
     --x-spacing-tablet: var(--section-spacing-md);
     --x-spacing-mobile: var(--section-spacing-sm);
 
-    --y-spacing-desktop: var(--section-spacing-xxxl);
+    --y-spacing-desktop: var(--section-spacing-xl);
     --y-spacing-tablet: var(--section-spacing-lg);
     --y-spacing-mobile: var(--section-spacing-xl);
 
@@ -168,18 +168,6 @@ const { title, metaTitle, metaDescription, ogTitle, canonical } = Astro.props;
     --rounded-full: 9999px;
 
     font-family: 'Poppins';
-    font-feature-settings:
-      'liga' 1,
-      'calt' 1; /* fix for Chrome */
-    scroll-behavior: smooth;
-  }
-
-  h1 {
-    line-height: 1.2;
-    margin: 0;
-    position: relative;
-    z-index: 15;
-    text-transform: capitalize;
   }
 
   h1 {
@@ -190,6 +178,16 @@ const { title, metaTitle, metaDescription, ogTitle, canonical } = Astro.props;
     font-family: 'Sofia Sans Extra Condensed Variable', sans-serif;
     color: var(--dark-main);
   }
+
+  h2 {
+    font-size: var(--fs-700);
+    font-weight: 600;
+    margin: 0;
+    position: relative;
+    /* font-family: 'Sofia Sans Extra Condensed Variable', sans-serif; */
+    color: var(--text-800);
+  }
+
   h3 {
     line-height: 1.2;
     margin: 0;

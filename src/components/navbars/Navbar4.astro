@@ -4,7 +4,6 @@
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/works', label: 'Works' },
-  { href: '/studio', label: 'Studio' },
   { href: '/process', label: 'Process' },
   { href: '/gallery', label: 'Gallery' },
 ];
@@ -20,9 +19,9 @@ const navLinks = [
         </span>
       </a>
 
-      <button class='navbar-menu-btn' data-menu-btn type='button'>
+      <!-- <button class='navbar-menu-btn' data-menu-btn type='button'>
         <span class='navbar-menu-text'>Meni</span>
-      </button>
+      </button> -->
     </div>
 
     <nav class='navbar-links'>
@@ -39,12 +38,12 @@ const navLinks = [
 
 <div class='navbar-mini-wrapper'>
   <div class='navbar-mini' data-mini-nav>
-    <button class='btn-default btn-get-in-touch' data-contact-btn type='button'>
+    <a href='mailto:starivajat@starivajat.rs' class='btn-default btn-get-in-touch' data-contact-btn type='button'>
       <span class='btn-default-inner'>
-        <span class='btn-default-text'>Pozovite Nas</span>
+        <span class='btn-default-text'>Kontaktirajte Nas</span>
         <span class='btn-default-circle'></span>
       </span>
-    </button>
+    </a>
 
     <button class='navbar-mini-menu' data-menu-btn type='button'>
       <span class='navbar-menu-text'>Meni</span>
@@ -59,12 +58,16 @@ const navLinks = [
         <span class='navbar-brand-text'>Stari Vajat</span>
       </div>
       <div class='menu-header-right'>
-        <button class='btn-default btn-get-in-touch menu-header-cta' data-contact-btn type='button'>
+        <a
+          href='mailto:starivajat@starivajat.rs'
+          class='btn-default btn-get-in-touch menu-header-cta'
+          data-contact-btn
+          type='button'>
           <span class='btn-default-inner'>
-            <span class='btn-default-text'>Pozovite Nas</span>
+            <span class='btn-default-text'>Kontaktirajte Nas</span>
             <span class='btn-default-circle'></span>
           </span>
-        </button>
+        </a>
         <button class='menu-close-btn' data-menu-close type='button'>
           <span class='menu-close-text'>zatvori</span>
         </button>
@@ -103,9 +106,9 @@ const navLinks = [
   .navbar {
     width: 100%;
     padding-inline: var(--x-spacing-desktop);
-    padding-block: var(--section-spacing-sm);
+    padding-block: 30px;
     position: absolute;
-    z-index: 20;
+    z-index: 20000;
     /* TODO add bellow to starter */
     overflow: hidden;
   }
@@ -227,6 +230,7 @@ const navLinks = [
     text-shadow: 0 2em 0 currentColor;
     transform: translateY(0);
     transition: transform 0.545s cubic-bezier(0.16, 1, 0.3, 1);
+    /* font-family: 'Poppins'; */
   }
 
   .navbar-menu-btn:hover .navbar-menu-text,
@@ -236,11 +240,11 @@ const navLinks = [
 
   .navbar-mini-wrapper {
     position: fixed;
-    top: var(--section-spacing-sm);
+    top: 30px;
     left: var(--x-spacing-desktop);
     z-index: 40;
     overflow: hidden;
-    height: 3rem;
+    height: 3.5rem;
     pointer-events: none;
   }
 
@@ -254,7 +258,7 @@ const navLinks = [
   .navbar-mini {
     display: flex;
     align-items: center;
-    width: 280px;
+    width: 320px;
     justify-content: space-between;
     transform: translateY(115%);
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.7, 1);
@@ -282,7 +286,7 @@ const navLinks = [
     inset: 0;
     background-color: #232323;
     color: #fff;
-    z-index: 30;
+    z-index: 30000;
     clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
     transition: clip-path 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
@@ -295,6 +299,11 @@ const navLinks = [
   .menu-overlay.is-open {
     clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
     pointer-events: auto;
+    z-index: 100000;
+  }
+
+  .menu-brand {
+    order: 2;
   }
 
   .menu-header {
@@ -325,7 +334,7 @@ const navLinks = [
   }
 
   .menu-header-right {
-    width: 280px;
+    width: 330px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -458,11 +467,11 @@ const navLinks = [
       top: var(--space-200);
       right: var(--x-spacing-mobile);
       left: unset;
-      height: 3.25rem;
+      height: 4rem;
     }
 
     .navbar-mini-menu {
-      padding: 0.75rem;
+      /* padding: 0.75rem; */
       border-radius: 33px;
       background: var(--dark-main);
     }
@@ -492,6 +501,11 @@ const navLinks = [
 
     .menu-header-right {
       width: auto;
+      order: 2;
+    }
+
+    .menu-brand {
+      order: 1 !important;
     }
 
     .menu-overlay {

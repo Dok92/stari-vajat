@@ -6,45 +6,56 @@ import Layout from '../layouts/Layout.astro';
 import AnimateOnScroll from '../animations/AnimateOnScroll.astro';
 import Faq1 from '../components/accordions/Faq1.astro';
 import Navbar4 from '../components/navbars/Navbar4.astro';
-import bgPattern from '../assets/white-bg-pattern.webp';
+import bgPatternBottom from '../assets/white-bg-pattern-bottom.webp';
 ---
 
 <Layout title='Home' metaTitle='Home' metaDescription='Home'>
   <Navbar4 />
   <Hero />
   <section class='one'>
-    <Image src={bgPattern} alt='' class='bg-pattern top' />
-    <div class='container'>
-      <AnimateOnScroll animation='up-slide'>
-        <h1 class='up-slide'>Section h1</h1>
-      </AnimateOnScroll>
-      <div class='side-transition-imgs'>
-        <div class='left-img'>
-          <AnimateOnScroll animation='slide-from-left'>
-            <img
-              src='/img/placeholder/mockup-dark-horizontal.webp'
-              alt='Placeholder Image Left'
-              class='slide-from-left'
-            />
-          </AnimateOnScroll>
+    <AnimateOnScroll animation='up-slide'>
+      <div class='wrapper-1'>
+        <div class='text'>
+          <h2 class='up-slide'>Section h2</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, pariatur excepturi ut ullam optio asperiores
+            voluptatum dicta numquam ex ea veniam commodi repellendus similique, accusamus ipsum! Quaerat saepe placeat
+            assumenda? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique odio, doloremque impedit
+            distinctio pariatur officiis possimus alias? Maxime officia, laborum assumenda reprehenderit iusto saepe
+            corrupti vero earum dolor optio labore.
+          </p>
         </div>
-        <div class='right-img'>
-          <AnimateOnScroll animation='slide-from-right'>
-            <img
-              src='/img/placeholder/mockup-dark-horizontal.webp'
-              alt='Placeholder Image Right'
-              class='slide-from-right'
-            />
-          </AnimateOnScroll>
-        </div>
+        <div class='card long'></div>
       </div>
+    </AnimateOnScroll>
+    <!-- <div class='container'> -->
+    <div class='side-transition-imgs'>
+      <div class='left-img'>
+        <AnimateOnScroll animation='slide-from-left'>
+          <img
+            src='/img/placeholder/mockup-dark-horizontal.webp'
+            alt='Placeholder Image Left'
+            class='slide-from-left'
+          />
+        </AnimateOnScroll>
+      </div>
+      <div class='right-img'>
+        <AnimateOnScroll animation='slide-from-right'>
+          <img
+            src='/img/placeholder/mockup-dark-horizontal.webp'
+            alt='Placeholder Image Right'
+            class='slide-from-right'
+          />
+        </AnimateOnScroll>
+      </div>
+      <!-- </div> -->
     </div>
-    <Image src={bgPattern} alt='' class='bg-pattern bottom' />
   </section>
+  <Image src={bgPatternBottom} alt='' class='bg-pattern bottom' />
   <section class='two'>
     <div class='down-under-slide-container'>
       <AnimateOnScroll animation='down-slide'>
-        <h1 class='down-under-slide'>This is test text heading</h1>
+        <h2 class='down-under-slide'>Jelovnik</h2>
       </AnimateOnScroll>
     </div>
   </section>
@@ -60,33 +71,45 @@ import bgPattern from '../assets/white-bg-pattern.webp';
 
 <style>
   section {
-    padding: 5rem 4rem;
     text-align: center;
     color: black;
     display: flex;
     flex-direction: column;
-    align-items: center;
-  }
-
-  .bg-pattern {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    z-index: 5;
-  }
-
-  .bg-pattern.top {
-    margin-top: -11rem;
+    align-items: flex-start;
+    text-align: left;
+    padding: var(--y-spacing-tablet) var(--x-spacing-desktop);
   }
 
   section.one {
-    background: white;
+    background: url('../assets/food-bg-white-2.webp') no-repeat;
+    background-size: cover;
+    background-color: white; /* Fallback color */
+    position: relative;
+    z-index: 5;
   }
 
-  section.one .container {
-    max-width: 1320px;
-    margin: 0 auto;
-    z-index: 10;
+  section.one .wrapper-1 {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+  }
+
+  section.one .text {
+    flex: 1;
+  }
+
+  .card.long {
+    flex: 0 0 50%;
+    height: 250px;
+    margin-left: 2rem;
+    border-radius: var(--rounded-xl);
+    background-color: black;
+  }
+  .bg-pattern.bottom {
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+    margin-top: -2px;
   }
   .side-transition-imgs {
     display: flex;
@@ -126,8 +149,5 @@ import bgPattern from '../assets/white-bg-pattern.webp';
   }
 
   @media screen and (max-width: 768px) {
-    .bg-pattern.top {
-      margin-top: -8rem;
-    }
   }
 </style>
