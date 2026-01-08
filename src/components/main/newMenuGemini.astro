@@ -1,0 +1,233 @@
+---
+import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
+import menuData from '../../../menu.json'; // Adjust path if necessary
+
+// Image Imports
+import rostiljLepinja from '../../assets/food/rostilj-lepinja.webp';
+import rostiljNaKilo from '../../assets/food/rostilj-na-kilo.webp';
+import salata from '../../assets/food/salata.webp';
+import prilog from '../../assets/food/prilog.webp';
+import obrokSalata from '../../assets/food/obrok-salata.webp';
+import gulas from '../../assets/food/gulas.webp';
+import pizza from '../../assets/food/pizza.webp';
+import paste from '../../assets/food/paste.webp';
+import pancakesPlate from '../../assets/food/pancaces-plate.webp';
+import slanaPalacinka from '../../assets/food/slana-palacinka.webp';
+import pohovanePalacinke from '../../assets/food/pohovane-palacinke.webp';
+import piteKolaci from '../../assets/food/pite-kolaci.webp';
+import omlet from '../../assets/food/omlet.webp';
+import sendvic from '../../assets/food/sendvic.webp';
+import kola from '../../assets/food/kola.webp';
+import sejk from '../../assets/food/sejk.webp';
+import coffeeGo from '../../assets/coffee-go.webp';
+
+// Create a map to link JSON strings to imported assets
+const imageMap = {
+  'rostilj-lepinja': rostiljLepinja.src,
+  'rostilj-na-kilo': rostiljNaKilo.src,
+  salata: salata.src,
+  prilog: prilog.src,
+  'obrok-salata': obrokSalata.src,
+  gulas: gulas.src,
+  pizza: pizza.src,
+  paste: paste.src,
+  'pancaces-plate': pancakesPlate.src,
+  'slana-palacinka': slanaPalacinka.src,
+  'pohovane-palacinke': pohovanePalacinke.src,
+  'pite-kolaci': piteKolaci.src,
+  omlet: omlet.src,
+  sendvic: sendvic.src,
+  kola: kola.src,
+  'coffee-go': coffeeGo.src,
+  sejk: sejk.src,
+};
+
+// Default section
+const defaultSection = menuData.menu.find((s) => s.section === 'Pizza') || menuData.menu[0];
+---
+
+<section class='menu'>
+  <AnimateOnScroll animation='up-slide'>
+    <h2>Naš Meni</h2>
+  </AnimateOnScroll>
+
+  <div class='menu-container'>
+    <p class='text'>
+      Naš bogat i raznovrstan jelovnik autentičnih nacionalnih jela napravljen je baš po vašem ukusu...
+    </p>
+
+    <div class='menu-buttons'>
+      <div class='dropdown-wrapper'>
+        <button class='category-btn' id='categoryToggle'>
+          <span id='current-category-label'>{defaultSection.section}</span>
+          <img src='/img/icons/regular/chevron-down.svg' alt='' id='chevron-icon' />
+        </button>
+
+        <ul class='dropdown-menu' id='dropdownMenu'>
+          {
+            menuData.menu.map((section) => (
+              <li class='dropdown-item' data-section={section.section}>
+                {section.section}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <a class='go-to-menu' href='/jelovnik'>
+        Pogledajte Ceo Jelovnik
+        <img src='/img/icons/regular/arrow.svg' alt='' />
+      </a>
+    </div>
+
+    <h3 class='heading' id='menu-heading'>{defaultSection.section}</h3>
+
+    <img
+      src={imageMap[defaultSection.sectionImg]}
+      alt={defaultSection.section}
+      class='category-img'
+      id='category-display-img'
+    />
+
+    <div class='menu-list' id='menu-items-container'>
+      {
+        defaultSection.items.slice(0, 6).map((item) => (
+          <div class='item'>
+            <h4 class='item-name'>{item.item}</h4>
+            <div class='line-price'>
+              <div class='line' />
+              <div class='price'>
+                <p>{item.price} RSD</p>
+              </div>
+            </div>
+            {item.note && <p class='note'>{item.note}</p>}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ menuData, imageMap }}>
+  const toggleBtn = document.getElementById('categoryToggle');
+  const dropdown = document.getElementById('dropdownMenu');
+  const chevron = document.getElementById('chevron-icon');
+  const label = document.getElementById('current-category-label');
+  const heading = document.getElementById('menu-heading');
+  const displayImg = document.getElementById('category-display-img');
+  const itemsContainer = document.getElementById('menu-items-container');
+
+  // Toggle Dropdown
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = dropdown.classList.toggle('show');
+    chevron.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
+  });
+
+  // Close dropdown when clicking outside
+  window.addEventListener('click', () => {
+    dropdown.classList.remove('show');
+    chevron.style.transform = 'rotate(0deg)';
+  });
+
+  // Handle Category Selection
+  document.querySelectorAll('.dropdown-item').forEach((item) => {
+    item.addEventListener('click', (e) => {
+      const sectionName = e.target.getAttribute('data-section');
+      const sectionData = menuData.menu.find((s) => s.section === sectionName);
+
+      if (sectionData) {
+        // Update UI
+        label.textContent = sectionName;
+        heading.textContent = sectionName;
+        displayImg.src = imageMap[sectionData.sectionImg];
+        displayImg.alt = sectionName;
+
+        // Update Menu List
+        itemsContainer.innerHTML = sectionData.items
+          .map(
+            (i) => `
+          <div class='item'>
+            <h4 class='item-name'>${i.item}</h4>
+            <div class='line-price'>
+              <div class='line'></div>
+              <div class='price'>
+                <p>${i.price} RSD</p>
+              </div>
+            </div>
+            ${i.note ? `<p class='note'>${i.note}</p>` : ''}
+          </div>
+        `
+          )
+          .join('');
+      }
+    });
+  });
+</script>
+
+<style>
+  /* Keep all your existing styles, but add/modify these: */
+
+  .dropdown-wrapper {
+    position: relative;
+    grid-area: btn;
+  }
+
+  .category-btn {
+    cursor: pointer;
+    background: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    /* Reuse your existing .category-btn styles */
+    border: 2px solid var(--primary-400);
+    padding: 14px 20px;
+    border-radius: var(--rounded-full);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    background: white;
+    border: 1px solid var(--primary-200);
+    border-radius: var(--rounded-md);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    min-width: 220px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: none; /* Hidden by default */
+  }
+
+  .dropdown-menu.show {
+    display: block;
+  }
+
+  .dropdown-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+    color: var(--text-700);
+  }
+
+  .dropdown-item:hover {
+    background: var(--primary-100);
+    color: var(--primary-700);
+  }
+
+  /* Ensure the chevron transition is smooth */
+  #chevron-icon {
+    transition: transform 0.3s ease;
+  }
+
+  /* Remove the old :active transform as we handle it via JS now */
+  .category-btn:active img {
+    transform: none;
+  }
+</style>

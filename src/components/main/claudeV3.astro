@@ -5,7 +5,7 @@ import gotovaJelaPorcija from '../../assets/food/gotova-jela-porcija.webp';
 import piteKolaci from '../../assets/food/pite-kolaci.webp';
 import salata from '../../assets/food/salata.webp';
 import gulas from '../../assets/food/gulas.webp';
-import pice from '../../assets/food/pizza.webp';
+import pizza from '../../assets/food/pizza.webp';
 import sejk from '../../assets/food/sejk.webp';
 import kola from '../../assets/food/kola.webp';
 import pohovanePalacinke from '../../assets/food/pohovane-palacinke.webp';
@@ -30,7 +30,7 @@ const imageMap = {
   'pite-kolaci': piteKolaci,
   salata: salata,
   gulas: gulas,
-  pice: pice,
+  pizza: pizza,
   sejk: sejk,
   kola: kola,
   'pohovane-palacinke': pohovanePalacinke,
@@ -48,8 +48,8 @@ const imageMap = {
 // Get all sections from menu data
 const sections = menuData.menu;
 
-// Get default section (pice)
-const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0];
+// Get default section (Pizza)
+const defaultSection = sections.find((s) => s.section === 'Pizza') || sections[0];
 ---
 
 <section class='menu'>
@@ -79,7 +79,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       <a class='go-to-menu' href='/jelovnik'>Pogledajte Ceo Jelovnik<img src='/img/icons/regular/arrow.svg' alt='' /></a
       >
     </div>
-    <!-- <h3 class='heading' id='section-heading'>{defaultSection.section}</h3> -->
+    <h3 class='heading' id='section-heading'>{defaultSection.section}</h3>
     <Image
       src={imageMap[defaultSection.sectionImg]}
       alt={defaultSection.section}
@@ -177,7 +177,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
   .category-btn {
     position: relative;
     border: 2px solid var(--primary-400);
-    padding: 14px 30px;
+    padding: 14px 20px;
     border-radius: var(--rounded-full);
     transition: all 0.3s ease;
     width: min-content;
@@ -189,8 +189,8 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     white-space: nowrap;
   }
 
-  .category-btn span {
-    font-size: var(--fs-400);
+  .category-btn p {
+    margin: 0;
   }
 
   .category-btn img {
@@ -208,8 +208,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     position: absolute;
     top: calc(100% + 8px);
     left: 0;
-    background: #ffa500;
-    scrollbar-width: thin;
+    background: white;
     border: 2px solid var(--primary-400);
     border-radius: var(--rounded-md);
     min-width: 100%;
@@ -265,7 +264,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
   .category-img {
     max-height: 400px;
     width: auto;
-    align-self: flex-start;
+    align-self: center;
     justify-self: center;
     margin-top: var(--space-300);
   }
@@ -274,6 +273,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     display: flex;
     flex-direction: column;
     gap: var(--space-400);
+    margin-top: var(--space-300);
   }
 
   .item {
@@ -282,7 +282,6 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     flex-wrap: wrap;
     align-items: flex-end;
     justify-content: space-between;
-    gap: var(--space-400);
     width: 100%;
   }
 
@@ -325,7 +324,6 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
   .note {
     flex-basis: 100%;
     color: var(--text-700);
-    margin: 0;
   }
 
   @media (min-width: 1060px) {
@@ -369,10 +367,6 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       order: 2;
       align-self: flex-start;
     }
-
-    /* .category-btn span {
-      font-size: var(--fs-400);
-    } */
 
     .category-img {
       max-width: 100%;
@@ -431,7 +425,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     if (!section) return;
 
     // Update heading and label
-    // sectionHeading.textContent = sectionName;
+    sectionHeading.textContent = sectionName;
     selectedCategorySpan.textContent = sectionName;
 
     // Update image
@@ -441,50 +435,54 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       categoryImg.alt = sectionName;
     }
 
-    // Get all existing item divs
-    const existingItems = menuList.querySelectorAll('.item');
+    // Clear existing items
+    menuList.innerHTML = '';
 
-    // Update existing items or add/remove as needed
-    section.items.forEach((item, index) => {
-      let itemDiv = existingItems[index];
+    // Create and append new items using DOM methods
+    section.items.forEach((item) => {
+      // Create item container
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'item';
 
-      // If item doesn't exist, create it
-      if (!itemDiv) {
-        itemDiv = existingItems[0].cloneNode(true);
-        menuList.appendChild(itemDiv);
-      }
+      // Create item name
+      const itemName = document.createElement('h4');
+      itemName.className = 'item-name';
+      itemName.textContent = item.item;
 
-      // Update content
-      const itemName = itemDiv.querySelector('.item-name');
-      const priceP = itemDiv.querySelector('.price p');
-      const noteP = itemDiv.querySelector('.note');
+      // Create line-price container
+      const linePriceDiv = document.createElement('div');
+      linePriceDiv.className = 'line-price';
 
-      if (itemName) itemName.textContent = item.item;
-      if (priceP) priceP.textContent = `${item.price} RSD`;
+      // Create line
+      const lineDiv = document.createElement('div');
+      lineDiv.className = 'line';
 
-      // Handle note
+      // Create price container
+      const priceDiv = document.createElement('div');
+      priceDiv.className = 'price';
+      const priceP = document.createElement('p');
+      priceP.textContent = `${item.price} RSD`;
+      priceDiv.appendChild(priceP);
+
+      // Assemble line-price
+      linePriceDiv.appendChild(lineDiv);
+      linePriceDiv.appendChild(priceDiv);
+
+      // Assemble item
+      itemDiv.appendChild(itemName);
+      itemDiv.appendChild(linePriceDiv);
+
+      // Add note if exists
       if (item.note) {
-        if (noteP) {
-          noteP.textContent = item.note;
-          noteP.style.display = '';
-        } else {
-          // Create note if it doesn't exist
-          const newNote = document.createElement('p');
-          newNote.className = 'note';
-          newNote.textContent = item.note;
-          itemDiv.appendChild(newNote);
-        }
-      } else {
-        if (noteP) {
-          noteP.style.display = 'none';
-        }
+        const noteP = document.createElement('p');
+        noteP.className = 'note';
+        noteP.textContent = item.note;
+        itemDiv.appendChild(noteP);
       }
-    });
 
-    // Remove extra items if new section has fewer items
-    for (let i = section.items.length; i < existingItems.length; i++) {
-      existingItems[i].remove();
-    }
+      // Append to menu list
+      menuList.appendChild(itemDiv);
+    });
   }
 
   // Toggle dropdown

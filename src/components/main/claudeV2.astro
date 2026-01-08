@@ -5,7 +5,7 @@ import gotovaJelaPorcija from '../../assets/food/gotova-jela-porcija.webp';
 import piteKolaci from '../../assets/food/pite-kolaci.webp';
 import salata from '../../assets/food/salata.webp';
 import gulas from '../../assets/food/gulas.webp';
-import pice from '../../assets/food/pizza.webp';
+import pizza from '../../assets/food/pizza.webp';
 import sejk from '../../assets/food/sejk.webp';
 import kola from '../../assets/food/kola.webp';
 import pohovanePalacinke from '../../assets/food/pohovane-palacinke.webp';
@@ -17,7 +17,6 @@ import pancakesPlate from '../../assets/food/pancaces-plate.webp';
 import paste from '../../assets/food/paste.webp';
 import rostiljNaKilo from '../../assets/food/rostilj-na-kilo.webp';
 import coffeeGo from '../../assets/coffee-go.webp';
-import omlet from '../../assets/food/omlet.webp';
 import Image from 'astro/components/Image.astro';
 
 // Import menu data
@@ -30,7 +29,7 @@ const imageMap = {
   'pite-kolaci': piteKolaci,
   salata: salata,
   gulas: gulas,
-  pice: pice,
+  pizza: pizza,
   sejk: sejk,
   kola: kola,
   'pohovane-palacinke': pohovanePalacinke,
@@ -42,14 +41,10 @@ const imageMap = {
   paste: paste,
   'rostilj-na-kilo': rostiljNaKilo,
   'coffee-go': coffeeGo,
-  omlet: omlet,
 };
 
 // Get all sections from menu data
 const sections = menuData.menu;
-
-// Get default section (pice)
-const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0];
 ---
 
 <section class='menu'>
@@ -64,7 +59,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     </p>
     <div class='menu-buttons'>
       <div class='category-btn'>
-        <span id='selected-category'>{defaultSection.section}</span>
+        <span id='selected-category'>Pizza</span>
         <img src='/img/icons/regular/chevron-down.svg' alt='' id='dropdown-arrow' />
         <div class='dropdown-menu' id='dropdown-menu'>
           {
@@ -79,28 +74,10 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       <a class='go-to-menu' href='/jelovnik'>Pogledajte Ceo Jelovnik<img src='/img/icons/regular/arrow.svg' alt='' /></a
       >
     </div>
-    <!-- <h3 class='heading' id='section-heading'>{defaultSection.section}</h3> -->
-    <Image
-      src={imageMap[defaultSection.sectionImg]}
-      alt={defaultSection.section}
-      class='category-img'
-      id='category-img'
-    />
+    <h3 class='heading' id='section-heading'>Pizza</h3>
+    <Image src={pizza} alt='Pizza' class='category-img' id='category-img' />
     <div class='menu-list' id='menu-list'>
-      {
-        defaultSection.items.map((item) => (
-          <div class='item'>
-            <h4 class='item-name'>{item.item}</h4>
-            <div class='line-price'>
-              <div class='line' />
-              <div class='price'>
-                <p>{item.price} RSD</p>
-              </div>
-            </div>
-            {item.note && <p class='note'>{item.note}</p>}
-          </div>
-        ))
-      }
+      <!-- Items will be populated by JavaScript -->
     </div>
   </div>
 </section>
@@ -177,7 +154,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
   .category-btn {
     position: relative;
     border: 2px solid var(--primary-400);
-    padding: 14px 30px;
+    padding: 14px 20px;
     border-radius: var(--rounded-full);
     transition: all 0.3s ease;
     width: min-content;
@@ -189,8 +166,8 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     white-space: nowrap;
   }
 
-  .category-btn span {
-    font-size: var(--fs-400);
+  .category-btn p {
+    margin: 0;
   }
 
   .category-btn img {
@@ -208,8 +185,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     position: absolute;
     top: calc(100% + 8px);
     left: 0;
-    background: #ffa500;
-    scrollbar-width: thin;
+    background: white;
     border: 2px solid var(--primary-400);
     border-radius: var(--rounded-md);
     min-width: 100%;
@@ -265,7 +241,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
   .category-img {
     max-height: 400px;
     width: auto;
-    align-self: flex-start;
+    align-self: center;
     justify-self: center;
     margin-top: var(--space-300);
   }
@@ -274,6 +250,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     display: flex;
     flex-direction: column;
     gap: var(--space-400);
+    margin-top: var(--space-300);
   }
 
   .item {
@@ -282,7 +259,6 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     flex-wrap: wrap;
     align-items: flex-end;
     justify-content: space-between;
-    gap: var(--space-400);
     width: 100%;
   }
 
@@ -325,7 +301,6 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
   .note {
     flex-basis: 100%;
     color: var(--text-700);
-    margin: 0;
   }
 
   @media (min-width: 1060px) {
@@ -370,10 +345,6 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       align-self: flex-start;
     }
 
-    /* .category-btn span {
-      font-size: var(--fs-400);
-    } */
-
     .category-img {
       max-width: 100%;
       height: auto;
@@ -413,108 +384,90 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
 </style>
 
 <script define:vars={{ sections, imageMap }}>
-  // Store current state
-  let isDropdownOpen = false;
+  document.addEventListener('DOMContentLoaded', () => {
+    // Store current category
+    let currentCategory = 'Pizza';
+    let isDropdownOpen = false;
 
-  // DOM elements
-  const categoryBtn = document.querySelector('.category-btn');
-  const dropdownMenu = document.getElementById('dropdown-menu');
-  const dropdownArrow = document.getElementById('dropdown-arrow');
-  const selectedCategorySpan = document.getElementById('selected-category');
-  const sectionHeading = document.getElementById('section-heading');
-  const categoryImg = document.getElementById('category-img');
-  const menuList = document.getElementById('menu-list');
+    // DOM elements
+    const categoryBtn = document.querySelector('.category-btn');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    const dropdownArrow = document.getElementById('dropdown-arrow');
+    const selectedCategorySpan = document.getElementById('selected-category');
+    const sectionHeading = document.getElementById('section-heading');
+    const categoryImg = document.getElementById('category-img');
+    const menuList = document.getElementById('menu-list');
 
-  // Function to update menu items
-  function updateMenu(sectionName) {
-    const section = sections.find((s) => s.section === sectionName);
-    if (!section) return;
+    // Function to update menu items
+    function updateMenu(sectionName) {
+      const section = sections.find((s) => s.section === sectionName);
+      if (!section) return;
 
-    // Update heading and label
-    // sectionHeading.textContent = sectionName;
-    selectedCategorySpan.textContent = sectionName;
+      // Update heading
+      sectionHeading.textContent = sectionName;
+      selectedCategorySpan.textContent = sectionName;
 
-    // Update image
-    const imgSrc = imageMap[section.sectionImg];
-    if (imgSrc && categoryImg) {
-      categoryImg.src = imgSrc.src;
-      categoryImg.alt = sectionName;
-    }
-
-    // Get all existing item divs
-    const existingItems = menuList.querySelectorAll('.item');
-
-    // Update existing items or add/remove as needed
-    section.items.forEach((item, index) => {
-      let itemDiv = existingItems[index];
-
-      // If item doesn't exist, create it
-      if (!itemDiv) {
-        itemDiv = existingItems[0].cloneNode(true);
-        menuList.appendChild(itemDiv);
+      // Update image
+      const imgSrc = imageMap[section.sectionImg];
+      if (imgSrc && categoryImg) {
+        categoryImg.src = imgSrc.src;
+        categoryImg.alt = sectionName;
       }
 
-      // Update content
-      const itemName = itemDiv.querySelector('.item-name');
-      const priceP = itemDiv.querySelector('.price p');
-      const noteP = itemDiv.querySelector('.note');
+      // Update menu items - ensure proper spacing and structure
+      menuList.innerHTML = section.items
+        .map((item) => {
+          const noteHtml = item.note ? `<p class="note">${item.note}</p>` : '';
+          return `
+          <div class="item">
+            <h4 class="item-name">${item.item}</h4>
+            <div class="line-price">
+              <div class="line"></div>
+              <div class="price">
+                <p>${item.price} RSD</p>
+              </div>
+            </div>
+            ${noteHtml}
+          </div>
+        `;
+        })
+        .join('');
 
-      if (itemName) itemName.textContent = item.item;
-      if (priceP) priceP.textContent = `${item.price} RSD`;
+      currentCategory = sectionName;
+    }
 
-      // Handle note
-      if (item.note) {
-        if (noteP) {
-          noteP.textContent = item.note;
-          noteP.style.display = '';
-        } else {
-          // Create note if it doesn't exist
-          const newNote = document.createElement('p');
-          newNote.className = 'note';
-          newNote.textContent = item.note;
-          itemDiv.appendChild(newNote);
-        }
-      } else {
-        if (noteP) {
-          noteP.style.display = 'none';
-        }
+    // Toggle dropdown
+    function toggleDropdown() {
+      isDropdownOpen = !isDropdownOpen;
+      dropdownMenu.classList.toggle('active', isDropdownOpen);
+      dropdownArrow.classList.toggle('rotated', isDropdownOpen);
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!categoryBtn.contains(e.target) && isDropdownOpen) {
+        toggleDropdown();
       }
     });
 
-    // Remove extra items if new section has fewer items
-    for (let i = section.items.length; i < existingItems.length; i++) {
-      existingItems[i].remove();
-    }
-  }
-
-  // Toggle dropdown
-  function toggleDropdown() {
-    isDropdownOpen = !isDropdownOpen;
-    dropdownMenu.classList.toggle('active', isDropdownOpen);
-    dropdownArrow.classList.toggle('rotated', isDropdownOpen);
-  }
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!categoryBtn.contains(e.target) && isDropdownOpen) {
-      toggleDropdown();
-    }
-  });
-
-  // Category button click
-  categoryBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleDropdown();
-  });
-
-  // Dropdown item click
-  const dropdownItems = document.querySelectorAll('.dropdown-item');
-  dropdownItems.forEach((item) => {
-    item.addEventListener('click', (e) => {
+    // Category button click
+    categoryBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const sectionName = item.getAttribute('data-section');
-      updateMenu(sectionName);
       toggleDropdown();
     });
+
+    // Dropdown item click
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+    dropdownItems.forEach((item) => {
+      item.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const sectionName = item.getAttribute('data-section');
+        updateMenu(sectionName);
+        toggleDropdown();
+      });
+    });
+
+    // Initialize with Pizza category
+    updateMenu('Pizza');
   });
 </script>
