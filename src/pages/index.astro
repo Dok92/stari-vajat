@@ -4,7 +4,6 @@ import Hero from '../components/main/Hero.astro';
 import Footer from '../components/main/Footer.astro';
 import Layout from '../layouts/Layout.astro';
 import AnimateOnScroll from '../animations/AnimateOnScroll.astro';
-import Faq1 from '../components/accordions/Faq1.astro';
 import Navbar4 from '../components/navbars/Navbar4.astro';
 import bgPatternBottom from '../assets/white-bg-pattern-bottom.webp';
 import Menu from '../components/main/Menu.astro';
@@ -29,28 +28,8 @@ import Menu from '../components/main/Menu.astro';
         <div class='card long'></div>
       </div>
     </AnimateOnScroll>
-    <div class='side-transition-imgs'>
-      <div class='left-img'>
-        <AnimateOnScroll animation='slide-from-left'>
-          <img
-            src='/img/placeholder/mockup-dark-horizontal.webp'
-            alt='Placeholder Image Left'
-            class='slide-from-left'
-          />
-        </AnimateOnScroll>
-      </div>
-      <div class='right-img'>
-        <AnimateOnScroll animation='slide-from-right'>
-          <img
-            src='/img/placeholder/mockup-dark-horizontal.webp'
-            alt='Placeholder Image Right'
-            class='slide-from-right'
-          />
-        </AnimateOnScroll>
-      </div>
-    </div>
   </section>
-  <Image src={bgPatternBottom} alt='' class='bg-pattern bottom' />
+  <Image src={bgPatternBottom} alt='' class='bg-pattern bottom' loading='lazy' />
   <Menu />
   <Footer />
 </Layout>

@@ -85,6 +85,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       alt={defaultSection.section}
       class='category-img'
       id='category-img'
+      loading='lazy'
     />
     <div class='menu-list' id='menu-list'>
       {
@@ -141,6 +142,41 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     justify-content: space-between;
     align-items: center;
   }
+  .menu {
+    padding: var(--y-spacing-tablet) var(--x-spacing-desktop);
+  }
+
+  .menu-container {
+    display: grid;
+    grid-template-areas:
+      'text  btn'
+      'text  head'
+      'img   menu';
+    column-gap: var(--section-spacing-xl);
+  }
+
+  .text {
+    grid-area: text;
+  }
+  .category-btn {
+    grid-area: btn;
+  }
+  .heading {
+    grid-area: head;
+  }
+  .category-img {
+    grid-area: img;
+  }
+  .menu-list {
+    grid-area: menu;
+  }
+
+  .menu-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   .go-to-menu {
     position: relative;
@@ -151,6 +187,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     color: var(--primary-700);
     text-decoration: none;
     padding-bottom: 2px;
+    font-size: var(--fs-300);
   }
 
   .go-to-menu::after {
@@ -208,9 +245,9 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     position: absolute;
     top: calc(100% + 8px);
     left: 0;
-    background: #ffa500;
+    background: var(--secondary-500);
     scrollbar-width: thin;
-    border: 2px solid var(--primary-400);
+    scrollbar-color: var(--primary-500) var(--secondary-400) !important;
     border-radius: var(--rounded-md);
     min-width: 100%;
     max-height: 400px;
@@ -362,7 +399,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     .menu-buttons {
       flex-direction: column;
       align-items: flex-start;
-      gap: var(--space-500);
+      gap: var(--space-600);
     }
 
     .category-btn {

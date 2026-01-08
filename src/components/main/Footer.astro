@@ -1,9 +1,220 @@
 ---
-
 const date = new Date();
 const year = date.getFullYear();
 ---
 
 <footer>
-  <p class='copyright'>&copy; {year} "Client"</p>
+  <div class='main'>
+    <div class='intro'>
+      <img src='/img/stari-vajat-light.svg' alt='Stari Vajat Logo' loading='lazy' />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit perferendis debitis cupiditate sint quos! Nemo
+        veritatis atque suscipit vitae optio ipsum. Omnis reiciendis facilis quos odit nemo quia provident adipisci?
+      </p>
+      <p class='note'>Nalazimo se u centru Jakova, blizu autobuske stanice.</p>
+    </div>
+    <div class='work-hours'>
+      <h3>Radno Vreme</h3>
+      <ul>
+        <li><span>Ponedeljak - Petak</span><span>9:00h - 21:00h</span></li>
+        <li><span>Subota</span><span>9:00h - 19:00h</span></li>
+        <li><span>Nedelja</span><span>Ne radimo</span></li>
+      </ul>
+    </div>
+    <div class='contact'>
+      <h3>Kontakt</h3>
+      <div class='contact-item'>
+        <img src='/img/icons/regular/location.svg' alt='' loading='lazy' />
+        <a
+          href='https://www.google.com/maps/place/Stari+Vajat/@44.758336,20.2558871,17z/data=!3m1!4b1!4m6!3m5!1s0x475a6b00714d9d9b:0xef597b013dc8c1ce!8m2!3d44.758336!4d20.2558871!16s%2Fg%2F11xflqjczv?entry=ttu&g_ep=EgoyMDI2MDEwNC4wIKXMDSoASAFQAw%3D%3D'>
+          Vožda Karađorđa 57, Jakovo
+        </a>
+      </div>
+      <div class='contact-item'>
+        <img src='/img/icons/regular/bi_phone-fill.svg' alt='' loading='lazy' />
+        <a href='tel:+381665435205'> 066 543 5205 </a>
+      </div>
+      <div class='contact-item'>
+        <img src='/img/icons/regular/email.svg' alt='' loading='lazy' />
+        <a href='mailto:starivajat@starivajat.rs'> starivajat@starivajat.rs </a>
+      </div>
+    </div>
+  </div>
+  <div class='divider'></div>
+  <div class='credits'>
+    <div class='copyright'>&copy; <span>Stari Vajat</span> {year}</div>
+    <div class='design'>Web Sajt Dizajnirao <a href='https://webdok.rs' target='_blank'>WebDok</a></div>
+  </div>
 </footer>
+
+<style>
+  footer {
+    background-color: var(--dark-main);
+    color: var(--text-100);
+    padding-top: var(--y-spacing-desktop);
+    padding-left: var(--x-spacing-desktop);
+    padding-right: var(--x-spacing-desktop);
+    padding-bottom: var(--space-400);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    footer {
+      padding-top: var(--y-spacing-tablet);
+      padding-left: var(--x-spacing-tablet);
+      padding-right: var(--x-spacing-tablet);
+    }
+  }
+
+  @media (max-width: 480px) {
+    footer {
+      padding-top: var(--y-spacing-mobile);
+      padding-left: var(--x-spacing-mobile);
+      padding-right: var(--x-spacing-mobile);
+    }
+  }
+
+  .main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--space-800);
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 968px) {
+    .main {
+      flex-direction: column;
+      gap: var(--space-600);
+    }
+    .intro img {
+      width: 320px;
+      height: auto;
+    }
+  }
+
+  .intro,
+  .work-hours,
+  .contact {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-400);
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .intro img {
+    width: 180px;
+    height: auto;
+  }
+
+  .intro p {
+    color: var(--text-200);
+    line-height: 1.6;
+  }
+
+  .intro .note {
+    color: var(--text-300);
+    font-size: var(--fs-300);
+    font-style: italic;
+  }
+
+  h3 {
+    font-size: var(--fs-400);
+    font-weight: 600;
+    color: var(--text-100);
+    margin-bottom: var(--space-200);
+  }
+
+  .work-hours ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-300);
+  }
+
+  .work-hours li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-200);
+    font-size: var(--fs-300);
+    gap: var(--space-400);
+  }
+
+  .work-hours li span:first-child {
+    font-weight: 500;
+  }
+
+  .work-hours li span:last-child {
+    color: var(--text-300);
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-300);
+  }
+
+  .contact-item img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+  }
+
+  .contact-item p,
+  .contact-item a {
+    color: var(--text-200);
+    font-size: var(--fs-300);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .contact-item a:hover {
+    color: var(--secondary);
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--text-600);
+    margin-top: var(--space-600);
+    margin-bottom: var(--space-500);
+  }
+
+  .credits {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--space-200);
+    text-align: center;
+  }
+
+  .copyright,
+  .design {
+    color: var(--text-300);
+    font-size: var(--fs-200);
+  }
+
+  .copyright span {
+    font-weight: 600;
+    color: var(--text-200);
+  }
+
+  .design a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+
+  .design a:hover {
+    color: var(--secondary-300);
+  }
+</style>

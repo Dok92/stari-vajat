@@ -10,6 +10,7 @@ import bgPatternTop from '../../assets/white-bg-pattern-top.webp';
 import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
 ---
 
+<!-- TODO fix loading of img's and animation glitching on load -->
 <section class='hero'>
   <Image src={bg} class='hero-img' alt='Placeholder Image' />
   <div class='text'>
@@ -21,22 +22,22 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
   </div>
 
   <div class='presentation'>
-    <img src='/img/icons/tray.svg' class='tray top' alt='' />
-    <Image src={pizza} class='plate pizza' alt='stari vajat pica' />
+    <img src='/img/icons/tray.svg' class='tray top' alt='' loading='eager' />
+    <Image src={pizza} class='plate pizza' alt='stari vajat pica' loading='eager' />
     <div class='description' id='top'>
       <p class='headline'>Pica "Vajat"</p>
       <p class='note'>pelat, kačkavalj, šunka, pršuta, kulen, pečurke, pavlaka, masline, origano, rukola</p>
     </div>
-    <Image src={coke} class='drink coke' alt='koka kola' />
+    <Image src={coke} class='drink coke' alt='koka kola' loading='eager' />
     <img src='/img/icons/tray.svg' class='tray bottom' alt='' />
-    <Image src={gulas} class='plate gulas' alt='juneći gulaš u tanjiru' />
+    <Image src={gulas} class='plate gulas' alt='juneći gulaš u tanjiru' loading='eager' />
     <div class='description' id='bottom'>
       <p class='headline'>Kuvana Jela</p>
       <p class='note'>Juneći gulaš, Ćufte u paradajz sosu, Pasulj sa rebrima i slaninom i dr.</p>
     </div>
-    <Image src={coffee} class='drink coffee' alt='espreso kafa' />
+    <Image src={coffee} class='drink coffee' alt='espreso kafa' loading='eager' />
   </div>
-  <Image src={bgPatternTop} alt='' class='bg-pattern top' />
+  <Image src={bgPatternTop} alt='' class='bg-pattern top' loading='lazy' />
 </section>
 <style>
   .hero {
@@ -77,6 +78,15 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
     font-size: var(--fs-500);
     font-weight: 500;
     margin-top: 0;
+  }
+
+  .plate,
+  .tray,
+  .drink,
+  .description {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    perspective: 1000px;
   }
 
   .tray {
