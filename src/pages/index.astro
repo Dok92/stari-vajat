@@ -7,6 +7,7 @@ import AnimateOnScroll from '../animations/AnimateOnScroll.astro';
 import Faq1 from '../components/accordions/Faq1.astro';
 import Navbar4 from '../components/navbars/Navbar4.astro';
 import bgPatternBottom from '../assets/white-bg-pattern-bottom.webp';
+import Menu from '../components/main/Menu.astro';
 ---
 
 <Layout title='Home' metaTitle='Home' metaDescription='Home'>
@@ -28,7 +29,6 @@ import bgPatternBottom from '../assets/white-bg-pattern-bottom.webp';
         <div class='card long'></div>
       </div>
     </AnimateOnScroll>
-    <!-- <div class='container'> -->
     <div class='side-transition-imgs'>
       <div class='left-img'>
         <AnimateOnScroll animation='slide-from-left'>
@@ -48,24 +48,10 @@ import bgPatternBottom from '../assets/white-bg-pattern-bottom.webp';
           />
         </AnimateOnScroll>
       </div>
-      <!-- </div> -->
     </div>
   </section>
   <Image src={bgPatternBottom} alt='' class='bg-pattern bottom' />
-  <section class='two'>
-    <div class='down-under-slide-container'>
-      <AnimateOnScroll animation='down-slide'>
-        <h2 class='down-under-slide'>Jelovnik</h2>
-      </AnimateOnScroll>
-    </div>
-  </section>
-  <section class='three'>
-    <h1>Section 3 : Faqs</h1>
-    <Faq1 />
-  </section>
-  <section class='four'>
-    <h1>Section four</h1>
-  </section>
+  <Menu />
   <Footer />
 </Layout>
 
@@ -103,7 +89,7 @@ import bgPatternBottom from '../assets/white-bg-pattern-bottom.webp';
     height: 250px;
     margin-left: 2rem;
     border-radius: var(--rounded-xl);
-    background-color: black;
+    background-color: var(--secondary-600);
   }
   .bg-pattern.bottom {
     object-fit: contain;
@@ -149,5 +135,24 @@ import bgPatternBottom from '../assets/white-bg-pattern-bottom.webp';
   }
 
   @media screen and (max-width: 768px) {
+    section {
+      padding: var(--y-spacing-mobile) var(--x-spacing-mobile);
+    }
+    section.one .wrapper-1 {
+      flex-direction: column;
+    }
+
+    section.one .text {
+      flex: 0 0 100%;
+    }
+
+    section.one .card.long {
+      flex: 1 1 100px;
+      margin-left: 0;
+    }
+
+    .side-transition-imgs {
+      flex-direction: column;
+    }
   }
 </style>

@@ -3,6 +3,7 @@
   "menu": [
     {
       "section": "Roštilj u lepinji",
+      "sectionImg": "rostilj-lepinja",
       "items": [
         { "item": "Pljeskavica", "note": "200g", "price": 400 },
         { "item": "Pljeskavica", "note": "300g", "price": 500 },
@@ -21,13 +22,14 @@
     },
     {
       "section": "Roštilj na kilo",
+      "sectionImg": "rostilj-na-kilo",
       "items": [
         { "item": "Ćevap", "note": "1kg", "price": 1700 },
         { "item": "Pljeskavica", "note": "1kg", "price": 1800 },
         { "item": "Gurmanska pljeskavica", "note": "1kg", "price": 1900 },
         { "item": "Punjena pljeskavica", "note": "1kg", "price": 1900 },
         { "item": "Domaća kobasica", "note": "1kg", "price": 1900 },
-        { "item": "Kobasica sa kačkavaljem", "note": "1kg", "price": 2300 },
+        { "item": "Kobasica sa kačkavaljem", "note": "2300", "price": 2300 },
         { "item": "Pileće belo meso", "note": "1kg", "price": 1700 },
         { "item": "Rolovano pileće belo meso", "note": "1kg", "price": 1800 },
         { "item": "Pileći batak", "note": "1kg", "price": 1700 },
@@ -38,6 +40,7 @@
     },
     {
       "section": "Salate",
+      "sectionImg": "salata",
       "items": [
         { "item": "Ruska salata", "note": "100gr", "price": 180 },
         { "item": "Pileća salata", "note": "100gr", "price": 180 },
@@ -52,6 +55,7 @@
     },
     {
       "section": "Prilog",
+      "sectionImg": "prilog",
       "items": [
         { "item": "Prilog ruska", "note": null, "price": 80 },
         { "item": "Prilog pileća", "note": null, "price": 80 },
@@ -63,6 +67,7 @@
     },
     {
       "section": "Obrok salate",
+      "sectionImg": "obrok-salata",
       "items": [
         {
           "item": "Vajat salata sa tunjevinom",
@@ -78,6 +83,7 @@
     },
     {
       "section": "Gotova jela 100gr",
+      "sectionImg": "gulas",
       "items": [
         { "item": "Juneći gulaš", "note": null, "price": 190 },
         { "item": "Ćufte u paradajz sosu", "note": null, "price": 150 },
@@ -108,6 +114,7 @@
     },
     {
       "section": "Gotova jela porcija",
+      "sectionImg": "gotova-jela-porcija",
       "items": [
         { "item": "Gulaš sa makaronama / pireom", "note": null, "price": 550 },
         { "item": "Ćufte sa pireom", "note": null, "price": 550 },
@@ -132,6 +139,7 @@
     },
     {
       "section": "Pizza",
+      "sectionImg": "pizza",
       "items": [
         {
           "item": "Vajat (32cm)",
@@ -208,6 +216,7 @@
     },
     {
       "section": "Paste",
+      "sectionImg": "paste",
       "items": [
         { "item": "Bolonjeze", "note": null, "price": 550 },
         { "item": "Carbonara", "note": null, "price": 550 },
@@ -216,6 +225,7 @@
     },
     {
       "section": "Palačinke slatke",
+      "sectionImg": "pancaces-plate",
       "items": [
         { "item": "Palačinka sa džemom", "note": null, "price": 190 },
         { "item": "Palačinka sa eurokremom", "note": null, "price": 230 },
@@ -237,6 +247,7 @@
     },
     {
       "section": "Palačinke slane",
+      "sectionImg": "slana-palacinka",
       "items": [
         { "item": "Slana palačinka šunka", "note": "šunka, kačkavalj, pavlaka", "price": 350 },
         { "item": "Slana palačinka pečenica", "note": "pečenica, kačlavalj, pavlaka", "price": 350 },
@@ -247,6 +258,7 @@
     },
     {
       "section": "Pohovane palačinke",
+      "sectionImg": "pohovane-palacinke",
       "items": [
         { "item": "Pohovana palačinka sa šunkom", "note": null, "price": 350 },
         { "item": "Pohovana palačinka sa pečenicom", "note": null, "price": 350 },
@@ -256,6 +268,7 @@
     },
     {
       "section": "Domaće pite i kolači",
+      "sectionImg": "pite-kolaci",
       "items": [
         { "item": "Domaća gibanica", "note": null, "price": 250 },
         { "item": "Proja", "note": null, "price": 220 },
@@ -273,6 +286,7 @@
     },
     {
       "section": "Omleti",
+      "sectionImg": "omlet",
       "items": [
         { "item": "Omlet sa šunkom + hleb", "note": "tri jaja, šunka", "price": 350 },
         { "item": "Omlet sa slaninom + hleb", "note": "tri jaja, slanina", "price": 350 },
@@ -282,6 +296,7 @@
     },
     {
       "section": "Sendviči",
+      "sectionImg": "sendvic",
       "items": [
         { "item": "Šunka sendvič", "note": "šunka, kačkavalj, pavlaka, zelena salata, jaje", "price": 300 },
         { "item": "Kulen sendvič", "note": "kulen, kačkavalj, pavlaka, zelena salata, jaje", "price": 350 },
@@ -300,6 +315,7 @@
     },
     {
       "section": "Piće",
+      "sectionImg": "kola",
       "items": [
         { "item": "Coca-Cola", "note": "0.33", "price": 150 },
         { "item": "Coca-Cola zero", "note": "0.33", "price": 150 },
@@ -314,6 +330,7 @@
     },
     {
       "section": "Kafa i čaj",
+      "sectionImg": "coffee-go",
       "items": [
         { "item": "Kafa", "note": "za poneti", "price": 150 },
         { "item": "Esspreso", "note": "za poneti", "price": 150 },
@@ -323,6 +340,7 @@
     },
     {
       "section": "Šejk i Smoothie",
+      "sectionImg": "sejk",
       "items": [
         { "item": "Plazma šejk", "note": null, "price": 300 },
         { "item": "Šumski smoothie", "note": null, "price": 300 },

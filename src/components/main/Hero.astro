@@ -7,13 +7,16 @@ import pizza from '../../assets/food/pizza.webp';
 import gulas from '../../assets/food/gulas.webp';
 import CTA2 from '../cta/CTA2.astro';
 import bgPatternTop from '../../assets/white-bg-pattern-top.webp';
+import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
 ---
 
 <section class='hero'>
   <Image src={bg} class='hero-img' alt='Placeholder Image' />
   <div class='text'>
-    <h1>Stari Vajat</h1>
-    <h2>Ukus domaće kuhinje na dohvat ruke</h2>
+    <AnimateOnScroll animation='down-slide'>
+      <h1>Stari Vajat</h1>
+      <h2>Ukus domaće kuhinje na dohvat ruke</h2>
+    </AnimateOnScroll>
     <CTA2 />
   </div>
 
