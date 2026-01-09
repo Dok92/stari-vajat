@@ -7,6 +7,9 @@ import AnimateOnScroll from '../animations/AnimateOnScroll.astro';
 import Navbar4 from '../components/navbars/Navbar4.astro';
 import bgPatternBottom from '../assets/white-bg-pattern-bottom.webp';
 import Menu from '../components/main/Menu.astro';
+import specialLong from '../../public/img/placeholder/special-long.webp';
+import specialFirst from '../../public/img/placeholder/special-1.webp';
+import specialSecond from '../../public/img/placeholder/special-2.webp';
 ---
 
 <Layout title='Home' metaTitle='Home' metaDescription='Home'>
@@ -16,18 +19,45 @@ import Menu from '../components/main/Menu.astro';
     <AnimateOnScroll animation='up-slide'>
       <div class='wrapper-1'>
         <div class='text'>
-          <h2 class='up-slide'>Section h2</h2>
+          <h2>Specijalna Ponuda</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, pariatur excepturi ut ullam optio asperiores
-            voluptatum dicta numquam ex ea veniam commodi repellendus similique, accusamus ipsum! Quaerat saepe placeat
-            assumenda? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique odio, doloremque impedit
-            distinctio pariatur officiis possimus alias? Maxime officia, laborum assumenda reprehenderit iusto saepe
-            corrupti vero earum dolor optio labore.
+            Redovno pravimo specijalne ponude i akcije koje menjamo svakih 10-ak dana, kako biste uvek imali priliku da
+            uživate u omiljenim jelima po povoljnijim cenama. Pratite naše aktuelne ponude, svratite do restorana ili
+            poručite na vreme i iskoristite posebne akcije dok traju.
           </p>
         </div>
-        <div class='card long'></div>
+        <Image src={specialLong} alt='Specijalna Ponuda' class='special-long' loading='lazy' />
+        <!-- <div class='card long'></div> -->
       </div>
     </AnimateOnScroll>
+    <AnimateOnScroll animation='up-slide' delay={0.2}>
+      <div class='cards-wrapper'>
+        <Image src={specialFirst} alt='Specijalna Ponuda' class='card special' loading='lazy' />
+        <Image src={specialSecond} alt='Specijalna Ponuda' class='card special' loading='lazy' />
+      </div>
+    </AnimateOnScroll>
+    <!-- <div class='cards-wrapper'>
+        <div class='card regular' id='1'>
+          <div class='card-text'>
+            <div class='card-heading'>
+              <img src='/img/icons/fire.svg' alt='' />
+              <h3>20% Sniženje Primer</h3>
+            </div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, excepturi.</p>
+          </div>
+          <div class='cta'></div>
+        </div>
+        <div class='card regular' id='2'>
+          <div class='card-text'>
+            <div class='card-heading'>
+              <img src='/img/icons/fire.svg' alt='' />
+              <h3>20% Sniženje Primer</h3>
+            </div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, excepturi.</p>
+          </div>
+          <div class='cta'></div>
+        </div>
+      </div> -->
   </section>
   <Image src={bgPatternBottom} alt='' class='bg-pattern bottom' loading='lazy' />
   <Menu />
@@ -51,6 +81,10 @@ import Menu from '../components/main/Menu.astro';
     background-color: white; /* Fallback color */
     position: relative;
     z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-600);
   }
 
   section.one .wrapper-1 {
@@ -68,6 +102,20 @@ import Menu from '../components/main/Menu.astro';
     height: 250px;
     margin-left: 2rem;
     border-radius: var(--rounded-xl);
+    background-color: var(--secondary-600);
+  }
+  .cards-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--space-600);
+    /* justify-content: space-between; */
+  }
+
+  .card {
+    flex: 0 0 50%;
+    height: auto;
+    border-radius: var(--rounded-md);
     background-color: var(--secondary-600);
   }
   .bg-pattern.bottom {
@@ -113,7 +161,7 @@ import Menu from '../components/main/Menu.astro';
     margin-bottom: 2rem;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1350px) {
     section {
       padding: var(--y-spacing-mobile) var(--x-spacing-mobile);
     }
@@ -126,8 +174,24 @@ import Menu from '../components/main/Menu.astro';
     }
 
     section.one .card.long {
-      flex: 1 1 100px;
+      /* flex: 1 1 100px; */
+      width: 100%;
       margin-left: 0;
+    }
+
+    .special-long {
+      width: 100%;
+      height: auto;
+    }
+
+    .cards-wrapper {
+      flex-direction: column;
+    }
+
+    .card {
+      /* flex: 0 0 100%; */
+      width: 100%;
+      height: auto;
     }
 
     .side-transition-imgs {
