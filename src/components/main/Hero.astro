@@ -10,7 +10,6 @@ import bgPatternTop from '../../assets/white-bg-pattern-top.webp';
 import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
 ---
 
-<!-- TODO fix loading of img's and animation glitching on load -->
 <section class='hero'>
   <Image src={bg} class='hero-img' alt='Placeholder Image' />
   <div class='text'>
@@ -22,23 +21,65 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
   </div>
 
   <div class='presentation'>
-    <img src='/img/icons/tray.svg' class='tray top' alt='' loading='eager' />
-    <Image src={pizza} class='plate pizza' alt='stari vajat pica' loading='eager' />
-    <div class='description' id='top'>
+    <img src='/img/icons/tray.svg' class='tray top animate-paused' alt='' loading='eager' />
+    <Image src={pizza} class='plate pizza animate-paused' alt='stari vajat pica' loading='eager' />
+    <div class='description animate-paused' id='top'>
       <p class='headline'>Pica "Vajat"</p>
       <p class='note'>pelat, kačkavalj, šunka, pršuta, kulen, pečurke, pavlaka, masline, origano, rukola</p>
     </div>
-    <Image src={coke} class='drink coke' alt='koka kola' loading='eager' />
-    <img src='/img/icons/tray.svg' class='tray bottom' alt='' />
-    <Image src={gulas} class='plate gulas' alt='juneći gulaš u tanjiru' loading='eager' />
-    <div class='description' id='bottom'>
+    <Image src={coke} class='drink coke animate-paused' alt='koka kola' loading='eager' />
+    <img src='/img/icons/tray.svg' class='tray bottom animate-paused' alt='' />
+    <Image src={gulas} class='plate gulas animate-paused' alt='juneći gulaš u tanjiru' loading='eager' />
+    <div class='description animate-paused' id='bottom'>
       <p class='headline'>Kuvana Jela</p>
       <p class='note'>Juneći gulaš, Ćufte u paradajz sosu, Pasulj sa rebrima i slaninom i dr.</p>
     </div>
-    <Image src={coffee} class='drink coffee' alt='espreso kafa' loading='eager' />
+    <Image src={coffee} class='drink coffee animate-paused' alt='espreso kafa' loading='eager' />
   </div>
   <Image src={bgPatternTop} alt='' class='bg-pattern top' loading='lazy' />
 </section>
+
+<script>
+  // Wait for critical images to load before starting animations
+  const criticalImages = document.querySelectorAll('.presentation img, .presentation picture img');
+  let loadedCount = 0;
+  const totalImages = criticalImages.length;
+
+  function startAnimations() {
+    // Remove animation-paused class to start all animations
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.animate-paused').forEach((el) => {
+        el.classList.remove('animate-paused');
+      });
+    });
+  }
+
+  function checkImageLoaded() {
+    loadedCount++;
+    if (loadedCount === totalImages) {
+      // Small delay to ensure smooth start
+      setTimeout(startAnimations, 100);
+    }
+  }
+
+  criticalImages.forEach((img) => {
+    if ((img as HTMLImageElement).complete) {
+      checkImageLoaded();
+    } else {
+      img.addEventListener('load', checkImageLoaded);
+      img.addEventListener('error', checkImageLoaded); // Continue even if image fails
+    }
+  });
+
+  // Fallback: start animations after 2 seconds even if images haven't loaded
+  setTimeout(() => {
+    if (loadedCount < totalImages) {
+      console.warn('Hero images took too long to load, starting animations anyway');
+      startAnimations();
+    }
+  }, 2000);
+</script>
+
 <style>
   .hero {
     width: 100%;
@@ -80,13 +121,25 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
     margin-top: 0;
   }
 
+  /* Performance optimizations */
   .plate,
   .tray,
   .drink,
   .description {
     will-change: transform, opacity;
     backface-visibility: hidden;
-    perspective: 1000px;
+    transform: translateZ(0); /* Force GPU acceleration */
+  }
+
+  /* Hide elements initially to prevent flash */
+  .tray,
+  .plate {
+    opacity: 0;
+  }
+
+  /* Pause animations until images load */
+  .animate-paused {
+    animation-play-state: paused !important;
   }
 
   .tray {
@@ -98,53 +151,57 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
   .tray.top {
     right: -18em;
     top: -20em;
-    /* display: none; */
-    animation: slideInTopRight 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    animation: slideInTopRight 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
   }
 
   .tray.bottom {
     right: 30em;
     top: 35em;
-    animation: slideInBottomLeft 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    animation: slideInBottomLeft 1.2s cubic-bezier(0.22, 0.61, 0.36, 1) 0.1s forwards;
   }
 
+  /* Optimized keyframes using transform only (GPU accelerated) */
   @keyframes slideInTopRight {
     from {
-      transform: rotate(180deg) translate(-100%, 100%);
+      opacity: 0;
+      transform: rotate(180deg) translate3d(-100%, 100%, 0);
     }
     to {
-      transform: rotate(180deg) translate(0, 0);
+      opacity: 1;
+      transform: rotate(180deg) translate3d(0, 0, 0);
     }
   }
 
   @keyframes slideInBottomLeft {
     from {
-      transform: translate(-100%, 100%);
+      opacity: 0;
+      transform: translate3d(-100%, 100%, 0);
     }
     to {
-      transform: translate(0, 0);
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
     }
   }
 
   @keyframes slideInPizza {
     from {
-      transform: translate(300%, -300%);
-      visibility: hidden;
+      transform: translate3d(300%, -300%, 0);
+      opacity: 0;
     }
     to {
-      transform: translate(0, 0);
-      visibility: visible;
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
     }
   }
 
   @keyframes slideIngulas {
     from {
-      transform: translate(-300%, 300%);
-      visibility: hidden;
+      transform: translate3d(-300%, 300%, 0);
+      opacity: 0;
     }
     to {
-      transform: translate(0, 0);
-      visibility: visible;
+      transform: translate3d(0, 0, 0);
+      opacity: 1;
     }
   }
 
@@ -159,15 +216,15 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
   .pizza {
     right: 29em;
     top: 9em;
-    visibility: hidden;
-    animation: 1.5s slideInPizza 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    opacity: 0;
+    animation: 1.2s slideInPizza 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
   }
 
   .gulas {
     right: 29em;
     top: 32em;
-    visibility: hidden;
-    animation: 1.5s slideIngulas 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    opacity: 0;
+    animation: 1.2s slideIngulas 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
   }
 
   .drink {
@@ -180,7 +237,7 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
     right: 14em;
     top: 16em;
     height: auto;
-    animation: fadeInRight 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 1.3s forwards;
+    animation: fadeInRight 1s cubic-bezier(0.22, 0.61, 0.36, 1) 1s forwards;
   }
 
   .coffee {
@@ -189,7 +246,7 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
     width: 11rem;
     height: auto;
     z-index: 2;
-    animation: fadeInLeft 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 1.3s forwards;
+    animation: fadeInLeft 1s cubic-bezier(0.22, 0.61, 0.36, 1) 1.1s forwards;
   }
 
   .description {
@@ -199,7 +256,7 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
     transform: rotate(327deg);
     width: 250px;
     text-align: center;
-    animation: fadeIn 1.5s cubic-bezier(0.22, 0.61, 0.36, 1) 2.3s forwards;
+    animation: fadeIn 1s cubic-bezier(0.22, 0.61, 0.36, 1) 1.8s forwards;
   }
 
   .description p {
@@ -232,29 +289,41 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
   @keyframes fadeInRight {
     from {
       opacity: 0;
-      transform: translateX(100px);
+      transform: translate3d(100px, 0, 0);
     }
     to {
       opacity: 1;
-      transform: translateX(0);
+      transform: translate3d(0, 0, 0);
     }
   }
+
   @keyframes fadeInLeft {
     from {
       opacity: 0;
-      transform: translateX(-100px);
+      transform: translate3d(-100px, 0, 0);
     }
     to {
       opacity: 1;
-      transform: translateX(0);
+      transform: translate3d(0, 0, 0);
     }
   }
+
   @keyframes fadeIn {
     from {
       opacity: 0;
     }
     to {
       opacity: 1;
+    }
+  }
+
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    .tray,
+    .plate,
+    .drink,
+    .description {
+      animation: fadeIn 0.3s ease-in forwards !important;
     }
   }
 
@@ -273,7 +342,6 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
       color: var(--text-900);
       font-weight: 500;
       text-transform: none;
-      /* padding-right: 1rem; */
       margin-bottom: 2rem;
     }
 
@@ -382,7 +450,6 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
       color: var(--text-900);
       font-weight: 500;
       text-transform: none;
-      /* padding-right: 1rem; */
       margin-bottom: 2rem;
     }
 
@@ -487,7 +554,6 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
       color: var(--text-900);
       font-weight: 500;
       text-transform: none;
-      /* padding-right: 1rem; */
       margin-bottom: 2rem;
     }
 
@@ -589,7 +655,6 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
       color: var(--text-900);
       font-weight: 500;
       text-transform: none;
-      /* padding-right: 1rem; */
       margin-bottom: 2rem;
     }
 
@@ -691,7 +756,6 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
       color: var(--text-900);
       font-weight: 500;
       text-transform: none;
-      /* padding-right: 1rem; */
       margin-bottom: 2rem;
     }
 

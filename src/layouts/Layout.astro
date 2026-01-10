@@ -49,7 +49,21 @@ const { title, metaTitle, metaDescription, ogTitle, canonical } = Astro.props;
 
     <link rel='canonical' href={canonical} />
 
-    {canonical.endsWith('/jelovnik') && <link rel='preload' as='image' href='../assets/dark-bg.webp' />}
+    {
+      Astro.url.pathname === '/' && (
+        <>
+          <link rel='preload' as='image' href='/src/assets/hero-bg.webp' />
+
+          <link rel='preload' as='image' href='/src/assets/food/pizza.webp' />
+          <link rel='preload' as='image' href='/src/assets/food/gulas.webp' />
+          <link rel='preload' as='image' href='/src/assets/coke-glass.webp' />
+          <link rel='preload' as='image' href='/src/assets/coffee-go.webp' />
+
+          <link rel='preload' as='image' href='/img/icons/tray.svg' />
+        </>
+      )
+    }
+    {Astro.url.pathname === '/jelovnik' && <link rel='preload' as='image' href='/src/assets/dark-bg.webp' />}
   </head>
   <body>
     <slot />
