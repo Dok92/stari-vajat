@@ -7,6 +7,11 @@ const navLinks = [
   { href: '/jelovnik', label: 'Jelovnik' },
   { href: '#kontakt', label: 'Kontakt' },
 ];
+
+// Remove specijal and jelovnik if page is /jelovnik
+if (Astro.url.pathname === '/jelovnik') {
+  navLinks.splice(1, 2);
+}
 ---
 
 <header class='navbar'>
