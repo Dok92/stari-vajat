@@ -81,7 +81,8 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       <a class='go-to-menu' href='/jelovnik'>Pogledajte Ceo Jelovnik<img src='/img/icons/regular/arrow.svg' alt='' /></a
       >
     </div>
-    <!-- <h3 class='heading' id='section-heading'>{defaultSection.section}</h3> -->
+  </div>
+<div class="menu-list" id="menu-list">
     <Image
       src={imageMap[defaultSection.sectionImg]}
       alt={defaultSection.section}
@@ -89,7 +90,6 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       id='category-img'
       loading='lazy'
     />
-    <div class='menu-list' id='menu-list'>
       {
         defaultSection.items.map((item) => (
           <div class='item'>
@@ -104,8 +104,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
           </div>
         ))
       }
-    </div>
-  </div>
+      </div>
 </section>
 
 <style>
@@ -118,7 +117,6 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     grid-template-areas:
       'text  btn'
       'text  head'
-      'img   menu';
     column-gap: var(--section-spacing-xl);
   }
 
@@ -131,11 +129,23 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
   .heading {
     grid-area: head;
   }
-  .category-img {
-    grid-area: img;
-  }
+
   .menu-list {
-    grid-area: menu;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: var(--section-spacing-xl);
+    row-gap: var(--space-200);
+    margin-top: var(--space-400);
+  }
+
+  .category-img {
+    width: auto;
+    height: auto;
+    max-height: 400px;
+    grid-row: 1 / 5;
+    justify-self: center;
+    margin-top: var(--space-300);
+
   }
 
   .menu-buttons {
@@ -265,20 +275,12 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     margin: 0;
     padding-right: var(--space-200);
   }
-
-  .category-img {
-    max-height: 400px;
-    width: auto;
-    align-self: flex-start;
-    justify-self: center;
-    margin-top: var(--space-300);
-  }
-
   .menu-list {
-    display: flex;
+    display: grid;
     flex-direction: column;
-    gap: var(--space-400);
+    gap: var(--space-600);
   }
+
 
   .item {
     display: flex;
@@ -378,9 +380,15 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       font-size: var(--fs-400);
     } */
 
+      .menu-list {
+      grid-template-columns: 1fr;    
+  }
+
     .category-img {
       max-width: 100%;
       height: auto;
+      grid-row: auto;
+      padding-bottom: var(--space-400);
     }
 
     .menu-list {
@@ -435,7 +443,6 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     if (!section) return;
 
     // Update heading and label
-    // sectionHeading.textContent = sectionName;
     selectedCategorySpan.textContent = sectionName;
 
     // Update image
@@ -445,14 +452,14 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       categoryImg.alt = sectionName;
     }
 
-    // Get all existing item divs
-    const existingItems = menuList.querySelectorAll('.item');
+    // Get all existing item divs (excluding the image)
+    const existingItems = Array.from(menuList.querySelectorAll('.item'));
 
     // Update existing items or add/remove as needed
     section.items.forEach((item, index) => {
       let itemDiv = existingItems[index];
 
-      // If item doesn't exist, create it
+      // If item doesn't exist, clone the first one
       if (!itemDiv) {
         itemDiv = existingItems[0].cloneNode(true);
         menuList.appendChild(itemDiv);
