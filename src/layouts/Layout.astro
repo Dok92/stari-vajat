@@ -48,6 +48,8 @@ const { title, metaTitle, metaDescription, ogTitle, canonical } = Astro.props;
     <link rel='manifest' href='/img/favicon/site.webmanifest' />
 
     <link rel='canonical' href={canonical} />
+
+    {canonical.endsWith('/jelovnik') && <link rel='preload' as='image' href='../assets/dark-bg.webp' />}
   </head>
   <body>
     <slot />
@@ -77,7 +79,7 @@ const { title, metaTitle, metaDescription, ogTitle, canonical } = Astro.props;
 
   :root {
     /* Color palette - name by use case */
-    --bg: #f5efdc;
+    --bg: var(--primary-50);
     --dark-main: #232323;
 
     --text-100: #f5f5f5;
@@ -186,14 +188,6 @@ const { title, metaTitle, metaDescription, ogTitle, canonical } = Astro.props;
     position: relative;
     /* font-family: 'Sofia Sans Extra Condensed Variable', sans-serif; */
     color: var(--text-800);
-  }
-
-  h3 {
-    line-height: 1.2;
-    margin: 0;
-    position: relative;
-    font-size: var(--fs-400);
-    color: var(--text-header);
   }
 
   p {

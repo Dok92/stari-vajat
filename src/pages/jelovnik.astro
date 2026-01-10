@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Footer from '../components/main/Footer.astro';
 import Image from 'astro/components/Image.astro';
 import Navbar4 from '../components/navbars/Navbar4.astro';
 import CTA2 from '../components/cta/CTA2.astro';
@@ -24,7 +25,6 @@ import coffeeGo from '../assets/coffee-go.webp';
 import omlet from '../assets/food/omlet.webp';
 
 import menuData from '../../menu.json';
-import Footer from '../components/main/Footer.astro';
 
 // Map image names to imports
 const imageMap = {
@@ -49,7 +49,7 @@ const imageMap = {
 };
 ---
 
-<Layout title='Jelovnik' metaTitle='Jelovnik' metaDescription='Jelovnik'>
+<Layout title='Jelovnik' metaTitle='Jelovnik' metaDescription='Jelovnik' canonical='http://localhost:4321/jelovnik'>
   <main>
     <section class='hero'>
       <Navbar4 />
@@ -67,10 +67,55 @@ const imageMap = {
           </AnimateOnScroll>
           <CTA2 />
         </div>
-        <img src='/img/stari-vajat-light.svg' alt='stari vajat logo' />
+        <a href='/'>
+          <img src='/img/stari-vajat-light.svg' alt='stari vajat logo' />
+        </a>
       </div>
     </section>
-    <section class='menu'>
+
+    <!-- Search Bar -->
+    <section class='search-section'>
+      <div class='search-container'>
+        <input type='text' id='search-input' class='search-input' placeholder='pretražite jelovnik' />
+        <button id='search-button' class='search-button'>
+          <img src='/img/icons/regular/loop.svg' alt='search' />
+        </button>
+      </div>
+      <div id='search-results' class='search-results hidden'>
+        <div class='search-results-header'>
+          <p class='search-results-count' id='results-count'></p>
+        </div>
+        <div id='results-container'></div>
+        <div class='no-results hidden' id='no-results'>
+          <p>Pokušajte sa drugom pretragom</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hidden templates for cloning -->
+    <template id='category-template'>
+      <div class='search-category'>
+        <h3 class='search-category-title'></h3>
+        <div class='category-items'></div>
+      </div>
+    </template>
+
+    <template id='item-template'>
+      <div class='search-item'>
+        <div class='item'>
+          <h4 class='item-name'></h4>
+          <div class='line-price'>
+            <div class='line'></div>
+            <div class='price'>
+              <p></p>
+            </div>
+          </div>
+          <p class='note hidden'></p>
+        </div>
+      </div>
+    </template>
+
+    <section class='menu' id='menu-section'>
       {
         menuData.menu.map((category, index) => {
           const categoryImage = imageMap[category.sectionImg];
@@ -138,8 +183,128 @@ const imageMap = {
     font-size: var(--fs-400);
   }
 
+  /* Search Section Styles */
+  .search-section {
+    padding: var(--space-700) var(--x-spacing-desktop);
+    background: var(--primary-50);
+  }
+
+  .search-container {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    gap: var(--space-200);
+    align-items: center;
+  }
+
+  .search-input {
+    flex: 1;
+    padding: 14px 20px;
+    border: 2px solid var(--primary-300);
+    border-radius: var(--rounded-full);
+    font-size: var(--fs-300);
+    font-family: inherit;
+    transition: all 0.3s ease;
+    background: white;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px var(--primary-100);
+  }
+
+  .search-input::placeholder {
+    color: var(--text-400);
+  }
+
+  .search-button {
+    padding: 14px 20px;
+    background: var(--primary-600);
+    border: none;
+    border-radius: var(--rounded-full);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search-button:hover {
+    background: var(--primary-700);
+    transform: scale(1.05);
+  }
+
+  .search-button:active {
+    transform: scale(0.98);
+  }
+
+  .search-button img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+  }
+
+  .search-results {
+    max-width: 800px;
+    margin: var(--space-700) auto 0;
+    background: white;
+    border-radius: var(--rounded-lg);
+    padding: var(--space-600);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .search-results.hidden {
+    display: none;
+  }
+
+  .search-results-header {
+    margin-bottom: var(--space-500);
+    padding-bottom: var(--space-400);
+    border-bottom: 2px solid var(--primary-200);
+  }
+
+  .search-results-count {
+    font-size: var(--fs-300);
+    color: var(--text-600);
+  }
+
+  .search-category {
+    margin-bottom: var(--space-600);
+  }
+
+  .search-category:last-child {
+    margin-bottom: 0;
+  }
+
+  .search-category-title {
+    font-size: var(--fs-500);
+    /* color: var(--primary-700); */
+    margin-bottom: var(--space-400);
+    font-weight: 500;
+  }
+
+  .search-item {
+    padding: var(--space-300) 0;
+    border-bottom: 1px solid var(--primary-100);
+  }
+
+  .search-item:last-child {
+    border-bottom: none;
+  }
+
+  .no-results {
+    text-align: center;
+    color: var(--text-500);
+    padding: var(--space-600);
+  }
+
+  .no-results.hidden {
+    display: none;
+  }
+
   .menu {
-    padding: var(--y-spacing-tablet) var(--x-spacing-desktop);
+    padding: 0 var(--x-spacing-desktop) var(--y-spacing-tablet);
   }
 
   .menu-category {
@@ -248,8 +413,12 @@ const imageMap = {
       width: 200px;
     }
 
+    .search-input {
+      width: 100%;
+    }
+
     .menu {
-      padding: var(--y-spacing-mobile) var(--x-spacing-mobile);
+      padding: var(--space-600) var(--x-spacing-mobile) var(--y-spacing-mobile);
     }
 
     .menu-content {
@@ -294,5 +463,150 @@ const imageMap = {
       margin-left: 0;
       font-size: var(--fs-400);
     }
+
+    .search-section {
+      padding: var(--space-500) var(--x-spacing-mobile);
+    }
+
+    .search-container {
+      flex-direction: column;
+      gap: var(--space-300);
+    }
+
+    .search-button {
+      width: 100%;
+      padding: 16px;
+    }
+
+    .search-results {
+      margin-top: var(--space-500);
+      padding: var(--space-500);
+    }
   }
 </style>
+
+<script define:vars={{ menuData }}>
+  // Normalize Serbian characters for search
+  function normalizeSerbianText(text) {
+    return text
+      .toLowerCase()
+      .replace(/đ/g, 'dj')
+      .replace(/š/g, 's')
+      .replace(/č/g, 'c')
+      .replace(/ć/g, 'c')
+      .replace(/ž/g, 'z');
+  }
+
+  const searchInput = document.getElementById('search-input');
+  const searchButton = document.getElementById('search-button');
+  const searchResults = document.getElementById('search-results');
+  const menuSection = document.getElementById('menu-section');
+  const resultsContainer = document.getElementById('results-container');
+  const resultsCount = document.getElementById('results-count');
+  const noResults = document.getElementById('no-results');
+
+  const categoryTemplate = document.getElementById('category-template');
+  const itemTemplate = document.getElementById('item-template');
+
+  function performSearch() {
+    const query = searchInput.value.trim();
+
+    if (!query) {
+      searchResults.classList.add('hidden');
+      menuSection.style.display = 'block';
+      return;
+    }
+
+    const normalizedQuery = normalizeSerbianText(query);
+    const results = [];
+
+    // Search through all categories and items
+    menuData.menu.forEach((category) => {
+      const categoryMatches = [];
+
+      category.items.forEach((item) => {
+        const normalizedItemName = normalizeSerbianText(item.item);
+        const normalizedNote = item.note ? normalizeSerbianText(item.note) : '';
+
+        if (normalizedItemName.includes(normalizedQuery) || normalizedNote.includes(normalizedQuery)) {
+          categoryMatches.push(item);
+        }
+      });
+
+      if (categoryMatches.length > 0) {
+        results.push({
+          category: category.section,
+          items: categoryMatches,
+        });
+      }
+    });
+
+    displayResults(results, query);
+  }
+
+  function displayResults(results, query) {
+    // Clear previous results
+    resultsContainer.textContent = '';
+
+    if (results.length === 0) {
+      resultsCount.textContent = `Nema rezultata za "${query}"`;
+      noResults.classList.remove('hidden');
+      searchResults.classList.remove('hidden');
+      menuSection.style.display = 'none';
+      return;
+    }
+
+    noResults.classList.add('hidden');
+    const totalItems = results.reduce((sum, cat) => sum + cat.items.length, 0);
+    resultsCount.textContent = `Pronađeno ${totalItems} rezultata za "${query}"`;
+
+    // Clone and populate templates
+    results.forEach((result) => {
+      const categoryClone = categoryTemplate.content.cloneNode(true);
+      const categoryDiv = categoryClone.querySelector('.search-category');
+      const categoryTitle = categoryClone.querySelector('.search-category-title');
+      const categoryItems = categoryClone.querySelector('.category-items');
+
+      categoryTitle.textContent = result.category;
+
+      result.items.forEach((item) => {
+        const itemClone = itemTemplate.content.cloneNode(true);
+        const itemName = itemClone.querySelector('.item-name');
+        const priceP = itemClone.querySelector('.price p');
+        const noteP = itemClone.querySelector('.note');
+
+        itemName.textContent = item.item;
+        priceP.textContent = `${item.price} RSD`;
+
+        if (item.note) {
+          noteP.textContent = item.note;
+          noteP.classList.remove('hidden');
+        }
+
+        categoryItems.appendChild(itemClone);
+      });
+
+      resultsContainer.appendChild(categoryClone);
+    });
+
+    searchResults.classList.remove('hidden');
+    menuSection.style.display = 'none';
+  }
+
+  // Event listeners
+  searchButton.addEventListener('click', performSearch);
+
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      performSearch();
+    }
+  });
+
+  // Clear search when input is empty
+  searchInput.addEventListener('input', (e) => {
+    if (!e.target.value.trim()) {
+      searchResults.classList.add('hidden');
+      menuSection.style.display = 'block';
+    }
+  });
+</script>
