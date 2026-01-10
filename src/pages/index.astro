@@ -42,28 +42,6 @@ import specialSecond from '../../public/img/placeholder/special-2.webp';
         <Image src={specialSecond} alt='Specijalna Ponuda' class='card special' loading='lazy' />
       </div>
     </AnimateOnScroll>
-    <!-- <div class='cards-wrapper'>
-        <div class='card regular' id='1'>
-          <div class='card-text'>
-            <div class='card-heading'>
-              <img src='/img/icons/fire.svg' alt='' />
-              <h3>20% Sniženje Primer</h3>
-            </div>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, excepturi.</p>
-          </div>
-          <div class='cta'></div>
-        </div>
-        <div class='card regular' id='2'>
-          <div class='card-text'>
-            <div class='card-heading'>
-              <img src='/img/icons/fire.svg' alt='' />
-              <h3>20% Sniženje Primer</h3>
-            </div>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique, excepturi.</p>
-          </div>
-          <div class='cta'></div>
-        </div>
-      </div> -->
   </section>
   <Image src={bgPatternBottom} alt='' class='bg-pattern bottom' loading='lazy' />
   <Menu />
@@ -84,7 +62,7 @@ import specialSecond from '../../public/img/placeholder/special-2.webp';
   section.one {
     background: url('../assets/food-bg-white-2.webp') no-repeat;
     background-size: cover;
-    background-color: white; /* Fallback color */
+    background-color: white;
     position: relative;
     z-index: 5;
     display: flex;
@@ -115,7 +93,6 @@ import specialSecond from '../../public/img/placeholder/special-2.webp';
     flex-direction: row;
     justify-content: center;
     gap: var(--space-600);
-    /* justify-content: space-between; */
   }
 
   .card {
@@ -180,7 +157,6 @@ import specialSecond from '../../public/img/placeholder/special-2.webp';
     }
 
     section.one .card.long {
-      /* flex: 1 1 100px; */
       width: 100%;
       margin-left: 0;
     }
@@ -195,7 +171,6 @@ import specialSecond from '../../public/img/placeholder/special-2.webp';
     }
 
     .card {
-      /* flex: 0 0 100%; */
       width: 100%;
       height: auto;
     }

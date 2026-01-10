@@ -20,7 +20,6 @@ import coffeeGo from '../../assets/coffee-go.webp';
 import omlet from '../../assets/food/omlet.webp';
 import Image from 'astro/components/Image.astro';
 
-// Import menu data
 import menuData from '../../../menu.json';
 
 // Map image names to imports
@@ -376,10 +375,6 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       align-self: flex-start;
     }
 
-    /* .category-btn span {
-      font-size: var(--fs-400);
-    } */
-
       .menu-list {
       grid-template-columns: 1fr;    
   }
@@ -498,27 +493,23 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     }
   }
 
-  // Toggle dropdown
   function toggleDropdown() {
     isDropdownOpen = !isDropdownOpen;
     dropdownMenu.classList.toggle('active', isDropdownOpen);
     dropdownArrow.classList.toggle('rotated', isDropdownOpen);
   }
 
-  // Close dropdown when clicking outside
   document.addEventListener('click', (e) => {
     if (!categoryBtn.contains(e.target) && isDropdownOpen) {
       toggleDropdown();
     }
   });
 
-  // Category button click
   categoryBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     toggleDropdown();
   });
 
-  // Dropdown item click
   const dropdownItems = document.querySelectorAll('.dropdown-item');
   dropdownItems.forEach((item) => {
     item.addEventListener('click', (e) => {

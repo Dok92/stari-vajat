@@ -1,6 +1,4 @@
 ---
-// FROM https://www.oharchitecture.com.au/process (works on round and square)
-
 const navLinks = [
   { href: '/', label: 'Početna' },
   { href: '#specijal', label: 'Specijal' },
@@ -8,7 +6,6 @@ const navLinks = [
   { href: '#kontakt', label: 'Kontakt' },
 ];
 
-// Remove specijal and jelovnik if page is /jelovnik
 if (Astro.url.pathname === '/jelovnik') {
   navLinks.splice(1, 2);
 }
@@ -23,10 +20,6 @@ if (Astro.url.pathname === '/jelovnik') {
           <span class='btn-default-circle'></span>
         </span>
       </a>
-
-      <!-- <button class='navbar-menu-btn' data-menu-btn type='button'>
-          <span class='navbar-menu-text'>Meni</span>
-        </button> -->
     </div>
 
     <nav class='navbar-links'>
@@ -98,7 +91,6 @@ if (Astro.url.pathname === '/jelovnik') {
 
   <div class='menu-bottom'>
     <div class='credits'>
-      <!-- <p>&copy; Client</p> -->
       <p>
         Dizajnirao:
         <a href='https://webdok.rs' target='_blank' rel='noreferrer'>WebDok</a>
@@ -159,7 +151,6 @@ if (Astro.url.pathname === '/jelovnik') {
   .navbar-cta {
     display: flex;
     align-items: center;
-    /* gap: var(--space-300); */
     width: 310px;
     justify-content: space-between;
     justify-self: end;
@@ -168,8 +159,6 @@ if (Astro.url.pathname === '/jelovnik') {
   .btn-default {
     border-radius: var(--rounded-full);
     border: none;
-    /* padding-inline: var(--space-400);
-    padding-block: var(--space-200); */
     padding: 12px 24px;
     background-color: var(--primary);
     color: #fff;
@@ -274,13 +263,6 @@ if (Astro.url.pathname === '/jelovnik') {
     transform: translateY(4px);
   }
 
-  /* .navbar-mini.is-visible .navbar-mini-menu {
-    background: #262626;
-    padding: 4px 8px;
-    border-radius: var(--rounded-full);
-    color: white;
-  } */
-
   :root.menu-open .navbar-mini {
     visibility: hidden;
     pointer-events: none;
@@ -328,7 +310,6 @@ if (Astro.url.pathname === '/jelovnik') {
   }
 
   .menu-close-btn {
-    /* margin-left: var(--space-400); */
     background: none;
     border: none;
     cursor: pointer;
