@@ -57,11 +57,13 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     <h2>Naš Meni</h2>
   </AnimateOnScroll>
   <div class='menu-container'>
-    <p class='text'>
-      Naš bogat i raznovrstan jelovnik autentičnih nacionalnih jela napravljen je baš po vašem ukusu. Čini ga više od 20
-      različitih kuvanih jela svakog dana, uz bogatu ponudu pića, brze hrane, palačinki i drugih specijaliteta,
-      pripremljenih od svežih sastojaka.
-    </p>
+    <AnimateOnScroll animation='up-slide' delay={0.2}>
+      <p class='text'>
+        Naš bogat i raznovrstan jelovnik autentičnih nacionalnih jela napravljen je baš po vašem ukusu. Čini ga više od
+        20 različitih kuvanih jela svakog dana, uz bogatu ponudu pića, brze hrane, palačinki i drugih specijaliteta,
+        pripremljenih od svežih sastojaka.
+      </p>
+    </AnimateOnScroll>
     <div class='menu-buttons'>
       <div class='category-btn'>
         <span id='selected-category'>{defaultSection.section}</span>
@@ -107,41 +109,6 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
 </section>
 
 <style>
-  .menu {
-    padding: var(--y-spacing-tablet) var(--x-spacing-desktop);
-  }
-
-  .menu-container {
-    display: grid;
-    grid-template-areas:
-      'text  btn'
-      'text  head'
-      'img   menu';
-    column-gap: var(--section-spacing-xl);
-  }
-
-  .text {
-    grid-area: text;
-  }
-  .category-btn {
-    grid-area: btn;
-  }
-  .heading {
-    grid-area: head;
-  }
-  .category-img {
-    grid-area: img;
-  }
-  .menu-list {
-    grid-area: menu;
-  }
-
-  .menu-buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
   .menu {
     padding: var(--y-spacing-tablet) var(--x-spacing-desktop);
   }

@@ -1,12 +1,15 @@
 ---
+import Layout from '../layouts/Layout.astro';
 import Image from 'astro/components/Image.astro';
+import Navbar4 from '../components/navbars/Navbar4.astro';
+import CTA2 from '../components/cta/CTA2.astro';
 import AnimateOnScroll from '../animations/AnimateOnScroll.astro';
 import rostiljLepinja from '../assets/food/rostilj-lepinja.webp';
 import gotovaJelaPorcija from '../assets/food/gotova-jela-porcija.webp';
 import piteKolaci from '../assets/food/pite-kolaci.webp';
 import salata from '../assets/food/salata.webp';
 import gulas from '../assets/food/gulas.webp';
-import pice from '../assets/food/pizza.webp';
+import pizza from '../assets/food/pizza.webp';
 import sejk from '../assets/food/sejk.webp';
 import kola from '../assets/food/kola.webp';
 import pohovanePalacinke from '../assets/food/pohovane-palacinke.webp';
@@ -21,4 +24,268 @@ import coffeeGo from '../assets/coffee-go.webp';
 import omlet from '../assets/food/omlet.webp';
 
 import menuData from '../../menu.json';
+import Footer from '../components/main/Footer.astro';
+
+// Map image names to imports
+const imageMap = {
+  'rostilj-lepinja': rostiljLepinja,
+  'gotova-jela-porcija': gotovaJelaPorcija,
+  'pite-kolaci': piteKolaci,
+  salata: salata,
+  gulas: gulas,
+  pizza: pizza,
+  sejk: sejk,
+  kola: kola,
+  'pohovane-palacinke': pohovanePalacinke,
+  sendvic: sendvic,
+  'obrok-salata': obrokSalata,
+  prilog: prilog,
+  'slana-palacinka': slanaPalacinka,
+  'pancaces-plate': pancakesPlate,
+  paste: paste,
+  'rostilj-na-kilo': rostiljNaKilo,
+  'coffee-go': coffeeGo,
+  omlet: omlet,
+};
 ---
+
+<Layout title='Jelovnik' metaTitle='Jelovnik' metaDescription='Jelovnik'>
+  <main>
+    <section class='hero'>
+      <Navbar4 />
+      <div class='content'>
+        <div class='text'>
+          <AnimateOnScroll animation='down-slide'>
+            <h1 class='text-center text-3xl font-bold'>Jelovnik</h1>
+          </AnimateOnScroll>
+          <AnimateOnScroll animation='down-slide' delay={0.2}>
+            <p>
+              Naš bogat i raznovrstan jelovnik autentičnih nacionalnih jela napravljen je baš po vašem ukusu. Čini ga
+              više od 20 različitih kuvanih jela svakog dana, uz bogatu ponudu pića, brze hrane, palačinki i drugih
+              specijaliteta, pripremljenih od svežih sastojaka.
+            </p>
+          </AnimateOnScroll>
+          <CTA2 />
+        </div>
+        <img src='/img/stari-vajat-light.svg' alt='stari vajat logo' />
+      </div>
+    </section>
+    <section class='menu'>
+      {
+        menuData.menu.map((category, index) => {
+          const categoryImage = imageMap[category.sectionImg];
+          if (!categoryImage) {
+            console.warn(`Missing image for section: ${category.section}, sectionImg: ${category.sectionImg}`);
+          }
+          return (
+            <div class='menu-category'>
+              <h2>{category.section}</h2>
+              <div class={`menu-content ${index % 2 === 1 ? 'reverse' : ''}`}>
+                {categoryImage && (
+                  <Image src={categoryImage} alt={category.section} class='category-img' loading='lazy' />
+                )}
+                {category.items.map((item) => (
+                  <div class='item'>
+                    <h4 class='item-name'>{item.item}</h4>
+                    <div class='line-price'>
+                      <div class='line' />
+                      <div class='price'>
+                        <p>{item.price} RSD</p>
+                      </div>
+                    </div>
+                    {item.note && <p class='note'>{item.note}</p>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })
+      }
+    </section>
+    <Footer />
+  </main>
+</Layout>
+
+<style>
+  h1 {
+    color: white !important;
+    margin-top: var(--section-spacing-lg);
+  }
+
+  .hero {
+    background: url('../assets/dark-bg.webp');
+    background-size: cover;
+    color: white;
+  }
+
+  .hero .content {
+    margin: var(--section-spacing-md) var(--x-spacing-desktop);
+    display: flex;
+  }
+
+  .hero p {
+    width: 50%;
+    margin-bottom: var(--space-700);
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: var(--space-700);
+  }
+
+  h4 {
+    margin: 0;
+    font-size: var(--fs-400);
+  }
+
+  .menu {
+    padding: var(--y-spacing-tablet) var(--x-spacing-desktop);
+  }
+
+  .menu-category {
+    margin-bottom: var(--section-spacing-xl);
+  }
+
+  .menu-category:last-child {
+    margin-bottom: 0;
+  }
+
+  .menu-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-800);
+  }
+
+  .category-img {
+    height: 400px;
+    width: auto;
+    grid-row: 1 / 4;
+    justify-self: center;
+  }
+
+  /* Reverse class for odd-indexed categories (image on the right) */
+  .menu-content.reverse .category-img {
+    grid-column: 2;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-400);
+    width: 100%;
+  }
+
+  .item:hover .item-name {
+    color: var(--primary-700);
+  }
+  .item:hover .price {
+    background: var(--primary-300);
+  }
+
+  .line-price {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    flex-grow: 1;
+  }
+
+  .line {
+    min-width: 10px;
+    flex-grow: 1;
+    border-bottom: 1px dashed var(--text-700);
+  }
+
+  .price {
+    margin-left: var(--space-200);
+    flex-grow: 0;
+    padding: 4px 20px;
+    background: white;
+    border-radius: var(--rounded-sm);
+    transition: all 0.3s ease;
+  }
+
+  .price p {
+    color: var(--text-700);
+    font-size: var(--fs-200);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .note {
+    flex-basis: 87%;
+    color: var(--text-700);
+    margin: 0;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .hero .content {
+      flex-direction: column;
+    }
+
+    .hero .content {
+      margin: var(--section-spacing-lg) var(--x-spacing-mobile);
+    }
+
+    h1 {
+      margin-top: var(--section-spacing-md);
+    }
+
+    .hero .text {
+      order: 2;
+    }
+
+    .hero p {
+      width: 100%;
+    }
+
+    .menu {
+      padding: var(--y-spacing-mobile) var(--x-spacing-mobile);
+    }
+
+    .menu-content {
+      grid-template-columns: 1fr;
+    }
+
+    .category-img {
+      max-width: 100%;
+      height: auto;
+      max-height: 400px;
+      grid-row: auto;
+    }
+
+    /* Reset reverse on mobile */
+    .menu-content.reverse .category-img {
+      grid-column: auto;
+    }
+
+    .item {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .line-price {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex-grow: 1;
+      width: 100%;
+      order: 2;
+      gap: var(--space-500);
+    }
+
+    .line {
+      order: 2;
+      width: 100%;
+    }
+
+    .price {
+      margin-left: 0;
+      font-size: var(--fs-400);
+    }
+  }
+</style>
