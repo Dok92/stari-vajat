@@ -10,7 +10,7 @@ import gotovaJelaPorcija from '../assets/food/gotova-jela-porcija.webp';
 import piteKolaci from '../assets/food/pite-kolaci.webp';
 import salata from '../assets/food/salata.webp';
 import gulas from '../assets/food/gulas.webp';
-import pizza from '../assets/food/pizza.webp';
+import pice from '../assets/food/pizza.webp';
 import sejk from '../assets/food/sejk.webp';
 import kola from '../assets/food/kola.webp';
 import pohovanePalacinke from '../assets/food/pohovane-palacinke.webp';
@@ -33,7 +33,7 @@ const imageMap = {
   'pite-kolaci': piteKolaci,
   salata: salata,
   gulas: gulas,
-  pizza: pizza,
+  pice: pice,
   sejk: sejk,
   kola: kola,
   'pohovane-palacinke': pohovanePalacinke,
@@ -68,7 +68,7 @@ const imageMap = {
           <CTA2 />
         </div>
         <a href='/'>
-          <img src='/img/stari-vajat-light.svg' alt='stari vajat logo' />
+          <img src='/img/stari-vajat-light.svg' class='logo' alt='stari vajat logo' />
         </a>
       </div>
     </section>
@@ -181,6 +181,20 @@ const imageMap = {
   h4 {
     margin: 0;
     font-size: var(--fs-400);
+  }
+
+  .logo {
+    opacity: 0;
+    animation: fadeIn 1s cubic-bezier(0.22, 0.61, 0.36, 1) 1s forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   /* Search Section Styles */
