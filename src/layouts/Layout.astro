@@ -5,19 +5,21 @@ import '@fontsource/poppins/600.css';
 
 interface Props {
   title: string;
-  metaTitle?: string;
-  metaDescription?: string;
-  ogTitle?: string;
-  canonical?: string;
+  metaTitle: string;
+  metaDescription: string;
+  ogDescription: string;
+  ogTitle: string;
+  canonical: string;
 }
 
-const { title, metaTitle, metaDescription, ogTitle, canonical } = Astro.props;
+const { title, metaTitle, metaDescription, ogTitle, ogDescription, canonical } = Astro.props;
 ---
 
 <!doctype html>
 <html lang='sr'>
   <head>
     <title>{title}</title>
+    <!-- TODO fix meta title, og title etc., make it easy to understand -->
 
     <!-- META -->
     <meta charset='UTF-8' />
@@ -33,7 +35,7 @@ const { title, metaTitle, metaDescription, ogTitle, canonical } = Astro.props;
     <meta name='twitter:image' content='https://stari-vajat.vercel.app/img/stari-vajat-og.jpg' />
     <meta property='og:image' content='https://stari-vajat.vercel.app/img/stari-vajat-og.jpg' />
     <meta property='og:title' content={ogTitle} />
-    <meta property='og:description' content={metaDescription} />
+    <meta property='og:description' content={ogDescription} />
     <meta property='og:image:width' content='1200' />
     <meta property='og:image:height' content='630' />
     <meta property='og:type' content='website' />
