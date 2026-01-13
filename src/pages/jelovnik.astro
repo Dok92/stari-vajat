@@ -79,7 +79,6 @@ const imageMap = {
       </div>
     </section>
 
-    <!-- Search Bar -->
     <section class='search-section'>
       <div class='search-container'>
         <input type='text' id='search-input' class='search-input' placeholder='pretražite jelovnik' />
@@ -505,7 +504,6 @@ const imageMap = {
 </style>
 
 <script define:vars={{ menuData }}>
-  // Normalize Serbian characters for search
   function normalizeSerbianText(text) {
     return text
       .toLowerCase()
@@ -539,7 +537,6 @@ const imageMap = {
     const normalizedQuery = normalizeSerbianText(query);
     const results = [];
 
-    // Search through all categories and items
     menuData.menu.forEach((category) => {
       const categoryMatches = [];
 

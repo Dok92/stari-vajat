@@ -121,6 +121,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
 
   .text {
     grid-area: text;
+    color: var(--font-700);
   }
   .category-btn {
     grid-area: btn;
@@ -420,10 +421,9 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
 </style>
 
 <script define:vars={{ sections, imageMap }}>
-  // Store current state
+
   let isDropdownOpen = false;
 
-  // DOM elements
   const categoryBtn = document.querySelector('.category-btn');
   const dropdownMenu = document.getElementById('dropdown-menu');
   const dropdownArrow = document.getElementById('dropdown-arrow');
@@ -432,25 +432,20 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
   const categoryImg = document.getElementById('category-img');
   const menuList = document.getElementById('menu-list');
 
-  // Function to update menu items
   function updateMenu(sectionName) {
     const section = sections.find((s) => s.section === sectionName);
     if (!section) return;
 
-    // Update heading and label
     selectedCategorySpan.textContent = sectionName;
 
-    // Update image
     const imgSrc = imageMap[section.sectionImg];
     if (imgSrc && categoryImg) {
       categoryImg.src = imgSrc.src;
       categoryImg.alt = sectionName;
     }
 
-    // Get all existing item divs (excluding the image)
     const existingItems = Array.from(menuList.querySelectorAll('.item'));
 
-    // Update existing items or add/remove as needed
     section.items.forEach((item, index) => {
       let itemDiv = existingItems[index];
 
@@ -460,7 +455,6 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
         menuList.appendChild(itemDiv);
       }
 
-      // Update content
       const itemName = itemDiv.querySelector('.item-name');
       const priceP = itemDiv.querySelector('.price p');
       const noteP = itemDiv.querySelector('.note');
@@ -468,13 +462,11 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       if (itemName) itemName.textContent = item.item;
       if (priceP) priceP.textContent = `${item.price} RSD`;
 
-      // Handle note
       if (item.note) {
         if (noteP) {
           noteP.textContent = item.note;
           noteP.style.display = '';
         } else {
-          // Create note if it doesn't exist
           const newNote = document.createElement('p');
           newNote.className = 'note';
           newNote.textContent = item.note;

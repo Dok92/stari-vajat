@@ -1,26 +1,37 @@
 ---
-import arrow from "../../public/assets/img/arrow.svg";
+import Image from 'astro/components/Image.astro';
+import arrow from '../../public/assets/img/arrow.svg';
 
-const { heading, text, imgSrc, imgAlt, reverse } = Astro.props;
+interface ImageProps {
+  src: ImageMetadata;
+  alt: string;
+}
+export interface Props {
+  heading: string;
+  text: string;
+  imgData: ImageProps;
+  reverse?: boolean;
+}
+
+const { heading, text, imgData, reverse } = Astro.props;
 ---
 
 <!-- NOTE Split reverser order of text and image (left and right ordering) -->
 <div class={`split ${reverse ? 'reverse' : ''}`}>
-  <div class="split-text">
-    <div class="text">
+  <div class='split-text'>
+    <div class='text'>
       <h2>{heading}</h2>
       <p>{text}</p>
     </div>
-    <a id="read-more" href="#" role="button">
+    <a id='read-more' href='#' role='button'>
       <span>Read more</span>
       <img src={arrow.src} alt='arrow' />
     </a>
   </div>
-  <div class="split-image">
-    <img src={imgSrc.src} width={imgSrc.width} alt={imgAlt} />
+  <div class='split-image'>
+    <Image src={imgData.src} alt={imgData.alt} />
   </div>
 </div>
-
 
 <style>
   .split {
@@ -36,7 +47,7 @@ const { heading, text, imgSrc, imgAlt, reverse } = Astro.props;
     flex-direction: row-reverse; /* Reverses the order of items */
   }
 
-  .split-text, 
+  .split-text,
   .split-image {
     flex: 1 1 50%;
     max-width: 50%;
@@ -85,7 +96,7 @@ const { heading, text, imgSrc, imgAlt, reverse } = Astro.props;
       flex-direction: column; /* Reset to column in reverse */
     }
 
-    .split-text, 
+    .split-text,
     .split-image {
       max-width: 100%;
     }

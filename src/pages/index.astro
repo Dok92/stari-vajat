@@ -10,6 +10,8 @@ import Menu from '../components/main/Menu.astro';
 import specialLong from '../../public/img/placeholder/special-long.webp';
 import specialFirst from '../../public/img/placeholder/special-1.webp';
 import specialSecond from '../../public/img/placeholder/special-2.webp';
+import cateringOne from './src/assets/catering-1.webp';
+import cateringTwo from './src/assets/catering-2.webp';
 ---
 
 <Layout
@@ -44,6 +46,31 @@ import specialSecond from '../../public/img/placeholder/special-2.webp';
     </AnimateOnScroll>
   </section>
   <Image src={bgPatternBottom} alt='' class='bg-pattern bottom' loading='lazy' />
+  <section class='catering' id='ketering'>
+    <div class='catering-text'>
+      <h2>Proslave i korporativne ponude</h2>
+      <p>
+        <strong>Stari Vajat</strong> nudi posebne opcije za <strong
+          >firme, korporativne proslave, rođendane i privatna okupljanja</strong
+        >. Bilo da organizujete poslovni ručak, slavlje sa kolegama ili porodičnu proslavu, pripremamo bogatu ponudu
+        hrane prilagođenu vašim potrebama.
+      </p>
+
+      <p>
+        U dogovoru sa vama obezbeđujemo <em>raznovrsna kuvana jela, roštilj, brzu hranu i priloge</em>, uz fleksibilne
+        količine, pouzdnu uslugu i domaći kvalitet po kome smo prepoznatljivi.
+      </p>
+
+      <p>
+        <strong>Kontaktirajte nas unapred</strong> kako bismo zajedno kreirali ponudu koja odgovara vašem događaju i omogućili
+        vama i vašim gostima da bez brige uživate u slavlju.
+      </p>
+    </div>
+    <div class='catering-imgs-wrapper'>
+      <Image src={cateringTwo} alt='hrana za proslavu' class='catering-img' loading='lazy' />
+      <Image src={cateringOne} alt='ketering' class='catering-img' loading='lazy' />
+    </div>
+  </section>
   <Menu />
   <Footer />
 </Layout>
@@ -51,7 +78,7 @@ import specialSecond from '../../public/img/placeholder/special-2.webp';
 <style>
   section {
     text-align: center;
-    color: black;
+    color: var(--text-700);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -107,41 +134,24 @@ import specialSecond from '../../public/img/placeholder/special-2.webp';
     height: auto;
     margin-top: -2px;
   }
-  .side-transition-imgs {
-    display: flex;
-    justify-content: space-between;
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-  .side-transition-imgs .left-img,
-  .side-transition-imgs .right-img {
-    width: 50%;
-    border-radius: 8px;
+
+  .catering {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-700);
+    padding: var(--y-spacing-tablet) var(--x-spacing-desktop) 0;
   }
 
-  .side-transition-imgs img {
+  .catering-imgs-wrapper {
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    gap: var(--space-400);
+  }
+
+  .catering-img {
+    border-radius: var(--rounded-xl);
     width: 100%;
     height: auto;
-    display: block;
-    border-radius: 8px;
-  }
-
-  .down-under-slide-container {
-    overflow: hidden;
-    padding-top: 2rem;
-  }
-
-  section.two h1 {
-    font-size: 5rem;
-    font-weight: 500;
-  }
-
-  section.three {
-    background: #f0f0f0;
-  }
-
-  section.three h1 {
-    margin-bottom: 2rem;
   }
 
   @media screen and (max-width: 1350px) {
@@ -175,8 +185,14 @@ import specialSecond from '../../public/img/placeholder/special-2.webp';
       height: auto;
     }
 
-    .side-transition-imgs {
-      flex-direction: column;
+    .catering {
+      grid-template-columns: 1fr;
+      gap: var(--space-500);
+      padding: var(--y-spacing-mobile) var(--x-spacing-mobile) 0;
+    }
+
+    .catering-imgs-wrapper {
+      grid-template-columns: 1fr;
     }
   }
 </style>
