@@ -2,13 +2,14 @@
 import { Image } from 'astro:assets';
 import img1 from '../../assets/gallery/gallery-1.webp';
 import img2 from '../../assets/gallery/gallery-2.webp';
-import img3 from '../../assets/gallery/gallery-3.webp';
+// import img3 from '../../assets/gallery/gallery-3.webp';
 import img4 from '../../assets/gallery/gallery-4.webp';
 import img5 from '../../assets/gallery/gallery-5.webp';
 import img6 from '../../assets/gallery/gallery-6.webp';
 import img7 from '../../assets/gallery/gallery-7.webp';
 import img8 from '../../assets/gallery/gallery-8.webp';
 import img9 from '../../assets/gallery/gallery-9.webp';
+import img10 from '../../assets/gallery/gallery-10.webp';
 
 import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
 ---
@@ -40,14 +41,17 @@ import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
       <Image src={img9} alt='' class='imgs' loading='lazy' />
     </div>
     <div class='img-item'>
+      <Image src={img10} alt='' class='imgs' loading='lazy' />
+    </div>
+    <div class='img-item'>
       <Image src={img1} alt='' class='imgs' loading='lazy' />
     </div>
     <div class='img-item'>
       <Image src={img2} alt='' class='imgs' loading='lazy' />
     </div>
-    <div class='img-item'>
+    <!-- <div class='img-item'>
       <Image src={img3} alt='' class='imgs' loading='lazy' />
-    </div>
+    </div> -->
   </div>
 </section>
 
