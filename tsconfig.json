@@ -1,11 +1,8 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "dist"
-  ],
+  "include": ["src/**/*"],
+  "exclude": ["dist"],
+  "typeRoots": ["node_modules/@types", "src/types"],
   "compilerOptions": {
     "checkJs": false,
     "jsx": "preserve",

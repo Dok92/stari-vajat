@@ -227,21 +227,52 @@
       "section": "Palačinke slatke",
       "sectionImg": "pancaces-plate",
       "items": [
-        { "item": "Palačinka sa džemom", "note": null, "price": 190 },
-        { "item": "Palačinka sa eurokremom", "note": null, "price": 230 },
-        { "item": "Palačinka sa nutelom", "note": null, "price": 230 },
-        { "item": "Palačinka snickers", "note": "eurokrem, kikiriki, snickers, karamela, šlag", "price": 350 },
-        { "item": "Palačinka bounty", "note": "eurokrem, kokos, bounty čokoladica, šlag", "price": 350 },
-        { "item": "Palačinka vanila-višnja", "note": "vanila krem, višnja, šlag, nutela", "price": 350 },
         {
-          "item": "Palačinka slatki vajat",
+          "item": "Palačinka Slatki Vajat",
           "note": "eurokrem, čokoladna bananica, boni bone, cream rolls, šlag, plazma, čoko preliv",
           "price": 380
         },
         {
+          "item": "Palačinka Kinder Bueno",
+          "itemImg": "kinder",
+          "price": 350
+        },
+        {
+          "item": "Palačinka Rafaello",
+          "itemImg": "rafaello",
+          "price": 350
+        },
+        {
+          "item": "Palačinka Pistaći",
+          "itemImg": "pistachio",
+          "price": 350
+        },
+        {
+          "item": "Palačinka Snickers",
+          "itemImg": "snickers",
+          "note": "eurokrem, kikiriki, snickers, karamela, šlag",
+          "price": 350
+        },
+        {
+          "item": "Palačinka Bounty",
+          "itemImg": "bounty",
+          "note": "eurokrem, kokos, bounty čokoladica, šlag",
+          "price": 350
+        },
+        { "item": "Palačinka Sa Džemom", "itemImg": "jam", "note": null, "price": 190 },
+        { "item": "Palačinka Sa Nutelom", "itemImg": "nutela", "note": null, "price": 230 },
+        {
+          "item": "Palačinka Vanila - Višnja",
+          "itemImg": "vanila",
+          "note": "vanila krem, višnja, šlag, nutela",
+          "price": 350
+        },
+        { "item": "Palačinka Sa Eurokremom", "itemImg": "eurokrem", "note": null, "price": 230 },
+        { "item": "Palačinka Sa Karamelom", "itemImg": "caramel", "note": null, "price": 190 },
+        {
           "item": "Prilozi za palačinke",
           "note": "plazma, orah, šumsko voće, med, banana, čokoladna bananica",
-          "price": 80
+          "price": 100
         }
       ]
     },
@@ -298,18 +329,18 @@
       "section": "Sendviči",
       "sectionImg": "sendvic",
       "items": [
-        { "item": "Šunka sendvič", "note": "šunka, kačkavalj, pavlaka, zelena salata, jaje", "price": 300 },
-        { "item": "Kulen sendvič", "note": "kulen, kačkavalj, pavlaka, zelena salata, jaje", "price": 350 },
+        { "item": "Šunka sendvič", "note": "šunka, kačkavalj, pavlaka, zelena salata, jaje", "price": 350 },
+        { "item": "Kulen sendvič", "note": "kulen, kačkavalj, pavlaka, zelena salata, jaje", "price": 400 },
         {
           "item": "Pečenica sendvič",
           "note": "pečenica, kačkavalj, jaja, paradajz, sendvič sos, pavlaka",
-          "price": 350
+          "price": 400
         },
-        { "item": "Pršuta sendvič", "note": "pršuta, kačkavalj, jaja, paradajz, sendvič sos, pavlaka", "price": 350 },
+        { "item": "Pršuta sendvič", "note": "pršuta, kačkavalj, jaja, paradajz, sendvič sos, pavlaka", "price": 400 },
         {
           "item": "Dimljena piletina sendvič",
           "note": "dimljena piletina, kačkavalj, jaja, paradajz, zelena salata",
-          "price": 350
+          "price": 400
         }
       ]
     },

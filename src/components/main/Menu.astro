@@ -1,5 +1,6 @@
 ---
 import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
+import Image from 'astro/components/Image.astro';
 import rostiljLepinja from '../../assets/food/rostilj-lepinja.webp';
 import gotovaJelaPorcija from '../../assets/food/gotova-jela-porcija.webp';
 import piteKolaci from '../../assets/food/pite-kolaci.webp';
@@ -18,11 +19,18 @@ import paste from '../../assets/food/paste.webp';
 import rostiljNaKilo from '../../assets/food/rostilj-na-kilo.webp';
 import coffeeGo from '../../assets/coffee-go.webp';
 import omlet from '../../assets/food/omlet.webp';
-import Image from 'astro/components/Image.astro';
-
+import oreo from '../../assets/food/items/oreo.webp';
+import snickers from '../../assets/food/items/snickers.webp';
+import bounty from '../../assets/food/items/bounty.webp';
+import rafaello from '../../assets/food/items/rafaello.webp';
+import jam from '../../assets/food/items/jam.webp';
+import kinder from '../../assets/food/items/kinder.webp';
+import eurokrem from '../../assets/food/items/eurokrem.webp';
+import nutela from '../../assets/food/items/nutella.webp';
+import vanila from '../../assets/food/items/vanila.webp';
+import pistachio from '../../assets/food/items/pistachio.webp';
 import menuData from '../../../menu.json';
 
-// Map image names to imports
 const imageMap = {
   'rostilj-lepinja': rostiljLepinja,
   'gotova-jela-porcija': gotovaJelaPorcija,
@@ -44,11 +52,24 @@ const imageMap = {
   omlet: omlet,
 };
 
+const itemImgMap = {
+  oreo,
+  snickers,
+  bounty,
+  rafaello,
+  jam,
+  kinder,
+  eurokrem,
+  nutela,
+  vanila,
+  pistachio
+};
+
 // Get all sections from menu data
 const sections = menuData.menu;
 
 // Get default section (pice)
-const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0];
+const defaultSection = sections.find((s) => s.section === 'Palačinke slatke') || sections[0];
 ---
 
 <section class='menu'>
@@ -92,7 +113,17 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       {
         defaultSection.items.map((item) => (
           <div class='item'>
-            <h4 class='item-name'>{item.item}</h4>
+            <div class="item-headline">
+              <h4 class='item-name'>{item.item}</h4>
+              {item.itemImg && itemImgMap[item.itemImg] &&(
+                <Image
+                  src={itemImgMap[item.itemImg]}
+                  alt={item.item}
+                  class='item-img'
+                  loading='lazy'
+                />
+              )}
+            </div>
             <div class='line-price'>
               <div class='line' />
               <div class='price'>
@@ -273,7 +304,24 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     color: var(--text-700);
     transition: all 0.3s ease;
     margin: 0;
-    padding-right: var(--space-200);
+    flex-shrink: 0;
+  }
+
+  .item-headline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-300);
+    flex-wrap: wrap;
+  }
+
+  .item-img {
+  max-width: 100px;
+  max-height: 60px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
   }
   .menu-list {
     display: grid;
@@ -398,6 +446,18 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       width: 100%;
     }
 
+    .item-headline {
+      flex-wrap: wrap;
+      align-items: center;
+      width: 100%;
+    }
+
+    .item-img {
+      order: 3;
+      margin-left: 0;
+      margin-top: 0;
+    }
+
     .line-price {
       display: flex;
       flex-direction: column;
@@ -445,6 +505,7 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
     }
 
     const existingItems = Array.from(menuList.querySelectorAll('.item'));
+    const itemHeadlines = Array.from(menuList.querySelectorAll('.item-headline'));
 
     section.items.forEach((item, index) => {
       let itemDiv = existingItems[index];
@@ -456,11 +517,30 @@ const defaultSection = sections.find((s) => s.section === 'Pice') || sections[0]
       }
 
       const itemName = itemDiv.querySelector('.item-name');
+      const itemHeadline = itemDiv.querySelector('.item-headline');
       const priceP = itemDiv.querySelector('.price p');
       const noteP = itemDiv.querySelector('.note');
+      let itemImg = itemDiv.querySelector('.item-img');
 
       if (itemName) itemName.textContent = item.item;
       if (priceP) priceP.textContent = `${item.price} RSD`;
+
+      // Handle item image
+      if (item.itemImg && imageMap[item.itemImg]) {
+        if (!itemImg) {
+          itemImg = document.createElement('img');
+          itemImg.className = 'item-img';
+          itemImg.loading = 'lazy';
+          itemHeadline.appendChild(itemImg);
+        }
+        itemImg.src = imageMap[item.itemImg].src;
+        itemImg.alt = item.item;
+        itemImg.style.display = '';
+      } else {
+        if (itemImg) {
+          itemImg.style.display = 'none';
+        }
+      }
 
       if (item.note) {
         if (noteP) {
