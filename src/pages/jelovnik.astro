@@ -23,6 +23,16 @@ import paste from '../assets/food/paste.webp';
 import rostiljNaKilo from '../assets/food/rostilj-na-kilo.webp';
 import coffeeGo from '../assets/coffee-go.webp';
 import omlet from '../assets/food/omlet.webp';
+import oreo from '../assets/food/items/oreo.webp';
+import snickers from '../assets/food/items/snickers.webp';
+import bounty from '../assets/food/items/bounty.webp';
+import rafaello from '../assets/food/items/rafaello.webp';
+import jam from '../assets/food/items/jam.webp';
+import kinder from '../assets/food/items/kinder.webp';
+import eurokrem from '../assets/food/items/eurokrem.webp';
+import nutela from '../assets/food/items/nutella.webp';
+import vanila from '../assets/food/items/vanila.webp';
+import pistachio from '../assets/food/items/pistachio.webp';
 
 import menuData from '../../menu.json';
 import Gallery1 from '../components/galleries/Gallery1.astro';
@@ -47,6 +57,19 @@ const imageMap = {
   'rostilj-na-kilo': rostiljNaKilo,
   'coffee-go': coffeeGo,
   omlet: omlet,
+};
+
+const itemImgMap = {
+  oreo,
+  snickers,
+  bounty,
+  rafaello,
+  jam,
+  kinder,
+  eurokrem,
+  nutela,
+  vanila,
+  pistachio
 };
 ---
 
@@ -136,16 +159,26 @@ const imageMap = {
                   <Image src={categoryImage} alt={category.section} class='category-img' loading='lazy' />
                 )}
                 {category.items.map((item) => (
-                  <div class='item'>
-                    <h4 class='item-name'>{item.item}</h4>
-                    <div class='line-price'>
-                      <div class='line' />
-                      <div class='price'>
-                        <p>{item.price} RSD</p>
-                      </div>
-                    </div>
-                    {item.note && <p class='note'>{item.note}</p>}
-                  </div>
+           <div class='item'>
+            <div class="item-headline">
+              <h4 class='item-name'>{item.item}</h4>
+              {item.itemImg && itemImgMap[item.itemImg] &&(
+                <Image
+                  src={itemImgMap[item.itemImg]}
+                  alt={item.item}
+                  class='item-img'
+                  loading='lazy'
+                />
+              )}
+            </div>
+            <div class='line-price'>
+              <div class='line' />
+              <div class='price'>
+                <p>{item.price} RSD</p>
+              </div>
+            </div>
+            {item.note && <p class='note'>{item.note}</p>}
+          </div>
                 ))}
               </div>
             </div>
@@ -368,6 +401,23 @@ const imageMap = {
   }
   .item:hover .price {
     background: var(--primary-300);
+  }
+
+    .item-headline {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-300);
+    flex-wrap: wrap;
+  }
+
+  .item-img {
+  max-width: 100px;
+  max-height: 60px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
   }
 
   .line-price {

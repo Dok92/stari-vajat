@@ -85,7 +85,7 @@
       "section": "Gotova jela 100gr",
       "sectionImg": "gulas",
       "items": [
-        { "item": "Juneći gulaš", "note": null, "price": 190 },
+        { "item": "Juneći gulaš", "note": null, "price": 230 },
         { "item": "Ćufte u paradajz sosu", "note": null, "price": 150 },
         { "item": "Musaka sa mlevenim mesom", "note": null, "price": 150 },
         { "item": "Prebranac", "note": null, "price": 140 },
@@ -97,18 +97,18 @@
         { "item": "Pilav sa piletinom", "note": null, "price": 150 },
         { "item": "Pileći paprikaš", "note": null, "price": 150 },
         { "item": "Đuveč sa svinjskim mesom", "note": null, "price": 150 },
-        { "item": "Sarmica od zelja", "note": null, "price": 180 },
+        { "item": "Sarmica od zelja", "note": null, "price": 230 },
         { "item": "Pohovane tikvice", "note": null, "price": 150 },
         { "item": "Tajlandska piletina", "note": null, "price": 180 },
         { "item": "Pekarski krompir", "note": null, "price": 130 },
         { "item": "Krompir pire", "note": null, "price": 120 },
         { "item": "Sarma sa mlevenim mesom", "note": null, "price": 180 },
-        { "item": "Bečka šnicla", "note": null, "price": 240 },
-        { "item": "Pileći file sa susamom", "note": null, "price": 240 },
+        { "item": "Bečka šnicla", "note": null, "price": 300 },
+        { "item": "Pileći file sa susamom", "note": null, "price": 300 },
         { "item": "Oslić", "note": null, "price": 220 },
-        { "item": "Pečeni pileći batak", "note": null, "price": 180 },
-        { "item": "Mućkalica", "note": null, "price": 180 },
-        { "item": "Punjena paprika", "note": null, "price": 180 },
+        { "item": "Pečeni pileći batak", "note": null, "price": 200 },
+        { "item": "Mućkalica", "note": null, "price": 200 },
+        { "item": "Punjena paprika", "note": null, "price": 200 },
         { "item": "Grilovano povrće", "note": null, "price": 180 }
       ]
     },
@@ -116,10 +116,10 @@
       "section": "Gotova jela porcija",
       "sectionImg": "gotova-jela-porcija",
       "items": [
-        { "item": "Gulaš sa makaronama / pireom", "note": null, "price": 550 },
+        { "item": "Gulaš sa makaronama / pireom", "note": null, "price": 600 },
         { "item": "Ćufte sa pireom", "note": null, "price": 550 },
         { "item": "Musaka sa mlevenim mesom", "note": null, "price": 550 },
-        { "item": "Prebranac sa kobasicom", "note": null, "price": 550 },
+        { "item": "Prebranac sa kobasicom", "note": null, "price": 600 },
         { "item": "Pileća Čorba", "note": null, "price": 500 },
         { "item": "Pasulj sa rebrima i slaninom", "note": null, "price": 550 },
         { "item": "Grašak sa piletinom", "note": null, "price": 550 },
@@ -128,13 +128,13 @@
         { "item": "Pileći paprikaš", "note": null, "price": 550 },
         { "item": "Đuveč sa svinjskim mesom", "note": null, "price": 550 },
         { "item": "Rižoto sa povrćem", "note": null, "price": 550 },
-        { "item": "Pileći file susam + pire / pekarski krompir", "note": null, "price": 550 },
-        { "item": "Bečka šnicla + pire / pekarski krompir", "note": null, "price": 550 },
-        { "item": "Faširane šnicle + pire krompir", "note": null, "price": 550 },
-        { "item": "Lovačke šnicle + pire krompir", "note": null, "price": 550 },
-        { "item": "Piletina sa 4 vrste sira", "note": null, "price": 550 },
-        { "item": "Karađorđeva + pire krompir", "note": null, "price": 550 },
-        { "item": "Piletina sa mlincima", "note": null, "price": 550 }
+        { "item": "Pileći file susam + pire / pekarski krompir", "note": null, "price": 600 },
+        { "item": "Bečka šnicla + pire / pekarski krompir", "note": null, "price": 600 },
+        { "item": "Faširane šnicle + pire krompir", "note": null, "price": 600 },
+        { "item": "Lovačke šnicle + pire krompir", "note": null, "price": 600 },
+        { "item": "Piletina sa 4 vrste sira", "note": null, "price": 600 },
+        { "item": "Karađorđeva + pire krompir", "note": null, "price": 600 },
+        { "item": "Piletina sa mlincima", "note": null, "price": 600 }
       ]
     },
     {
@@ -218,9 +218,9 @@
       "section": "Paste",
       "sectionImg": "paste",
       "items": [
-        { "item": "Bolonjeze", "note": null, "price": 550 },
-        { "item": "Carbonara", "note": null, "price": 550 },
-        { "item": "Pene piletina", "note": null, "price": 550 }
+        { "item": "Bolonjeze", "note": null, "price": 600 },
+        { "item": "Carbonara", "note": null, "price": 600 },
+        { "item": "Pene piletina", "note": null, "price": 600 }
       ]
     },
     {
@@ -301,8 +301,8 @@
       "section": "Domaće pite i kolači",
       "sectionImg": "pite-kolaci",
       "items": [
-        { "item": "Domaća gibanica", "note": null, "price": 250 },
-        { "item": "Proja", "note": null, "price": 220 },
+        { "item": "Domaća gibanica", "note": null, "price": 300 },
+        { "item": "Proja", "note": null, "price": 250 },
         { "item": "Pita sa mesom", "note": null, "price": 280 },
         { "item": "Punjene przenice", "note": null, "price": 250 },
         { "item": "Pita sa jabukama", "note": null, "price": 250 },
