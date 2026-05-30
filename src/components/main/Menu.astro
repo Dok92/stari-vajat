@@ -1,18 +1,18 @@
 ---
 import AnimateOnScroll from '../../animations/AnimateOnScroll.astro';
 import Image from 'astro/components/Image.astro';
-import rostiljLepinja from '../../assets/food/rostilj-lepinja.webp';
+import rostiljLepinja from '../../assets/food/pljeskavica.webp';
 import gotovaJelaPorcija from '../../assets/food/gotova-jela-porcija.webp';
 import piteKolaci from '../../assets/food/pite-kolaci.webp';
 import salata from '../../assets/food/salata.webp';
 import gulas from '../../assets/food/gulas.webp';
-import pice from '../../assets/food/pizza.webp';
+import pice from '../../assets/food/pica.webp';
 import sejk from '../../assets/food/sejk.webp';
 import kola from '../../assets/food/kola.webp';
 import pohovanePalacinke from '../../assets/food/pohovane-palacinke.webp';
 import sendvic from '../../assets/food/sendvic.webp';
 import obrokSalata from '../../assets/food/obrok-salata.webp';
-import prilog from '../../assets/food/prilog.webp';
+import prilog from '../../assets/food/prilozi.webp';
 import slanaPalacinka from '../../assets/food/slana-palacinka.webp';
 import pancakesPlate from '../../assets/food/pancaces-plate.webp';
 import paste from '../../assets/food/paste.webp';
@@ -317,12 +317,12 @@ const defaultSection = sections.find((s) => s.section === 'Palačinke slatke') |
   }
 
   .item-img {
-  max-width: 100px;
-  max-height: 60px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
+    max-width: 150px;
+    max-height: 100px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
   }
   .menu-list {
     display: grid;
@@ -374,12 +374,6 @@ const defaultSection = sections.find((s) => s.section === 'Palačinke slatke') |
     color: var(--text-700);
     font-size: var(--fs-200);
     font-weight: 600;
-    margin: 0;
-  }
-
-  .note {
-    flex-basis: 87%;
-    color: var(--text-700);
     margin: 0;
   }
 
@@ -481,10 +475,10 @@ const defaultSection = sections.find((s) => s.section === 'Palačinke slatke') |
   }
 </style>
 
-<script define:vars={{ sections, imageMap }}>
-
+<script define:vars={{ sections, imageMap, itemImgMap }}>
+ 
   let isDropdownOpen = false;
-
+ 
   const categoryBtn = document.querySelector('.category-btn');
   const dropdownMenu = document.getElementById('dropdown-menu');
   const dropdownArrow = document.getElementById('dropdown-arrow');
@@ -492,49 +486,49 @@ const defaultSection = sections.find((s) => s.section === 'Palačinke slatke') |
   const sectionHeading = document.getElementById('section-heading');
   const categoryImg = document.getElementById('category-img');
   const menuList = document.getElementById('menu-list');
-
+ 
   function updateMenu(sectionName) {
     const section = sections.find((s) => s.section === sectionName);
     if (!section) return;
-
+ 
     selectedCategorySpan.textContent = sectionName;
-
+ 
     const imgSrc = imageMap[section.sectionImg];
     if (imgSrc && categoryImg) {
       categoryImg.src = imgSrc.src;
       categoryImg.alt = sectionName;
     }
-
+ 
     const existingItems = Array.from(menuList.querySelectorAll('.item'));
     const itemHeadlines = Array.from(menuList.querySelectorAll('.item-headline'));
-
+ 
     section.items.forEach((item, index) => {
       let itemDiv = existingItems[index];
-
+ 
       // If item doesn't exist, clone the first one
       if (!itemDiv) {
         itemDiv = existingItems[0].cloneNode(true);
         menuList.appendChild(itemDiv);
       }
-
+ 
       const itemName = itemDiv.querySelector('.item-name');
       const itemHeadline = itemDiv.querySelector('.item-headline');
       const priceP = itemDiv.querySelector('.price p');
       const noteP = itemDiv.querySelector('.note');
       let itemImg = itemDiv.querySelector('.item-img');
-
+ 
       if (itemName) itemName.textContent = item.item;
       if (priceP) priceP.textContent = `${item.price} RSD`;
-
+ 
       // Handle item image
-      if (item.itemImg && imageMap[item.itemImg]) {
+      if (item.itemImg && itemImgMap[item.itemImg]) {
         if (!itemImg) {
           itemImg = document.createElement('img');
           itemImg.className = 'item-img';
           itemImg.loading = 'lazy';
           itemHeadline.appendChild(itemImg);
         }
-        itemImg.src = imageMap[item.itemImg].src;
+        itemImg.src = itemImgMap[item.itemImg].src;
         itemImg.alt = item.item;
         itemImg.style.display = '';
       } else {
@@ -542,7 +536,7 @@ const defaultSection = sections.find((s) => s.section === 'Palačinke slatke') |
           itemImg.style.display = 'none';
         }
       }
-
+ 
       if (item.note) {
         if (noteP) {
           noteP.textContent = item.note;
@@ -559,30 +553,30 @@ const defaultSection = sections.find((s) => s.section === 'Palačinke slatke') |
         }
       }
     });
-
+ 
     // Remove extra items if new section has fewer items
     for (let i = section.items.length; i < existingItems.length; i++) {
       existingItems[i].remove();
     }
   }
-
+ 
   function toggleDropdown() {
     isDropdownOpen = !isDropdownOpen;
     dropdownMenu.classList.toggle('active', isDropdownOpen);
     dropdownArrow.classList.toggle('rotated', isDropdownOpen);
   }
-
+ 
   document.addEventListener('click', (e) => {
     if (!categoryBtn.contains(e.target) && isDropdownOpen) {
       toggleDropdown();
     }
   });
-
+ 
   categoryBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     toggleDropdown();
   });
-
+ 
   const dropdownItems = document.querySelectorAll('.dropdown-item');
   dropdownItems.forEach((item) => {
     item.addEventListener('click', (e) => {

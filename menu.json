@@ -5,10 +5,10 @@
       "section": "Roštilj u lepinji",
       "sectionImg": "rostilj-lepinja",
       "items": [
-        { "item": "Pljeskavica", "note": "200g", "price": 400 },
-        { "item": "Pljeskavica", "note": "300g", "price": 500 },
-        { "item": "Gurmanska pljeskavica", "note": "200g", "price": 450 },
-        { "item": "Gurmanska pljeskavica", "note": "300g", "price": 500 },
+        { "item": "Pljeskavica 200g", "price": 400 },
+        { "item": "Pljeskavica 300g", "price": 500 },
+        { "item": "Gurmanska pljeskavica 200g", "price": 450 },
+        { "item": "Gurmanska pljeskavica 300g", "price": 500 },
         { "item": "Punjena pljeskavica", "note": "270g", "price": 500 },
         { "item": "Ćevap", "note": "200g", "price": 400 },
         { "item": "Pileće belo", "note": "200g", "price": 400 },
@@ -233,42 +233,41 @@
           "price": 380
         },
         {
-          "item": "Palačinka Kinder Bueno",
+          "item": "Kinder Bueno",
           "itemImg": "kinder",
           "price": 350
         },
         {
-          "item": "Palačinka Rafaello",
+          "item": "Rafaello",
           "itemImg": "rafaello",
           "price": 350
         },
         {
-          "item": "Palačinka Pistaći",
+          "item": "Pistaći",
           "itemImg": "pistachio",
           "price": 350
         },
         {
-          "item": "Palačinka Snickers",
+          "item": "Snickers",
           "itemImg": "snickers",
           "note": "eurokrem, kikiriki, snickers, karamela, šlag",
           "price": 350
         },
         {
-          "item": "Palačinka Bounty",
+          "item": "Bounty",
           "itemImg": "bounty",
           "note": "eurokrem, kokos, bounty čokoladica, šlag",
           "price": 350
         },
-        { "item": "Palačinka Sa Džemom", "itemImg": "jam", "note": null, "price": 190 },
-        { "item": "Palačinka Sa Nutelom", "itemImg": "nutela", "note": null, "price": 230 },
+        { "item": "Sa Džemom", "itemImg": "jam", "note": null, "price": 190 },
+        { "item": "Sa Nutelom", "itemImg": "nutela", "note": null, "price": 230 },
         {
-          "item": "Palačinka Vanila - Višnja",
+          "item": "Vanila - Višnja",
           "itemImg": "vanila",
           "note": "vanila krem, višnja, šlag, nutela",
           "price": 350
         },
-        { "item": "Palačinka Sa Eurokremom", "itemImg": "eurokrem", "note": null, "price": 230 },
-        { "item": "Palačinka Sa Karamelom", "itemImg": "caramel", "note": null, "price": 190 },
+        { "item": "Sa Eurokremom", "itemImg": "eurokrem", "note": null, "price": 230 },
         {
           "item": "Prilozi za palačinke",
           "note": "plazma, orah, šumsko voće, med, banana, čokoladna bananica",

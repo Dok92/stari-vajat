@@ -7,9 +7,6 @@ import AnimateOnScroll from '../animations/AnimateOnScroll.astro';
 import Navbar4 from '../components/navbars/Navbar4.astro';
 import bgPatternBottom from '../assets/white-bg-pattern-bottom.webp';
 import Menu from '../components/main/Menu.astro';
-import specialLong from '../../public/img/placeholder/special-long.webp';
-// import specialFirst from '../../public/img/placeholder/special-1.webp';
-// import specialSecond from '../../public/img/placeholder/special-2.webp';
 import pizzaColaVertical from '../assets/discounts/akcija-cola1l-gratis-vertikalna-2.webp';
 import pizzaCola from '../assets/discounts/akcija-cola1l-gratis.webp';
 import cateringOne from '../assets/catering-1.webp';
@@ -30,24 +27,18 @@ import Gallery1 from '../components/galleries/Gallery1.astro';
     <AnimateOnScroll animation='up-slide'>
       <div class='wrapper-1'>
         <div class='text'>
-          <h2>Specijalna Ponuda</h2>
+          <h2>Specijalne Ponude</h2>
           <p>
             Redovno pravimo specijalne ponude i akcije koje menjamo svakih 10-ak dana, kako biste uvek imali priliku da
             uživate u omiljenim jelima po povoljnijim cenama. Pratite naše aktuelne ponude, svratite do restorana ili
             poručite na vreme i iskoristite posebne akcije dok traju.
           </p>
+          <p class="italic">Mogućnost plaćanja karticama.</p>
         </div>
         <Image src={pizzaCola} alt='Specijalna Ponuda' class='action' id='action-horizontal' loading='lazy' />
         <Image src={pizzaColaVertical} alt='Specijalna Ponuda' class='action' id='action-vertical' loading='lazy' />
-        <!-- <div class='card long'></div> -->
       </div>
     </AnimateOnScroll>
-    <!-- <AnimateOnScroll animation='up-slide' delay={0.2}>
-      <div class='cards-wrapper'>
-        <Image src={specialFirst} alt='Specijalna Ponuda' class='card special' loading='lazy' />
-        <Image src={specialSecond} alt='Specijalna Ponuda' class='card special' loading='lazy' />
-      </div>
-    </AnimateOnScroll> -->
   </section>
   <Image src={bgPatternBottom} alt='' class='bg-pattern bottom' loading='lazy' />
   <section class='catering' id='ketering'>
